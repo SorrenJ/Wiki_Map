@@ -30,7 +30,8 @@ CREATE TABLE locations (
   image VARCHAR(255),
   longitude DECIMAL,
   latitude DECIMAL,
-  map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE
+  map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 
