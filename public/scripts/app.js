@@ -7,6 +7,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-var marker = L.marker([43.651070, -79.347015]).addTo(map);
 
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+function onMapClick(e){
+  alert(e.latlng);
+
+  var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+console.log(e.latlng);
+}
+map.on('click', onMapClick);
