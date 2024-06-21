@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
@@ -26,9 +28,35 @@
 <body>
   <h1>Map view</h1>
 
-  <div id="map">
+  <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
+  <form action="/users" method="POST">
+    <input type="hidden" name="userId" value="1"> <!-- Example user ID -->
+    <input type="hidden" name="mapId" value="3"> <!-- Example item ID -->
+    <button type="submit">Favorite</button>
+</form>
+
+  <div class ="location_desc">
+    <h1>Starbucks</h1>
+    <h1>Favorite an Item</h1>
+   
+    </div>
+  <div id="map" style='z-index:1'>
     <p>WHERE'S THE MAP</p>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 
