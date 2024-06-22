@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -41,6 +42,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps', locationRoutes);
+app.use(cookieParser());
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -48,7 +50,7 @@ app.use('/maps', locationRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('map');
+  res.render('createMap');
 });
 
 app.listen(PORT, () => {

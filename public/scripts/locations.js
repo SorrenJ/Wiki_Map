@@ -8,8 +8,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
 let marker, newLatLng;
+let clickedMarker;
 
-function onMarkerClick(e){
+$('#edit-btn').hide();
+
+function onMarkerDrag(e){
   //draggable: true for editing
   //marker = L.marker(e.latlng, {draggable: true}).addTo(map);
   console.log("Target", e);
@@ -21,16 +24,20 @@ function onMarkerClick(e){
 function onMarkerDrop(event) {
   console.log("New Position:", this._latlng);
   newLatLng = this._latlng;
+  clickedMarker.dragging.disable();
+  // return newLatLng;
 };
 
-$('#edit-btn').on('click', () => {
-  console.log("Button was Clicked");
-});
-
 $(() => {
+  console.log("Front end cookie", document.cookie.split("=")[2]);     //Use document.cookie to get Front-end/Client side cookie
+  const mapId = document.cookie.split("=")[2];
+  // $.ajax({
+  //   method: 'GET',
+  //   url: `/maps/:id/locations`
+  // })
   $.ajax({
     method: 'GET',
-    url: '/maps/:id/locations'
+    url: `/maps/${mapId}/locations`
   })
   .done((response) => {
     console.log(response);
@@ -43,52 +50,69 @@ $(() => {
         lng: Number(location.longitude)
       };
       marker = L.marker(newLatLng).addTo(map);
+      marker.on('click', onMarkerClick);
     }
   });
 });
 
-$(document).ready(function() {
-  let latLng;
-  $('#edit-btn').on('click', function() {
-    //map.removeLayer(marker);        //Only removes 1 marker
-    //Send this to the query to INSERT into the favourites Table
-    //Removes all markers
-    map.eachLayer((layer) => {
-      if (layer instanceof L.Marker) {
-         layer.remove();
-      }
-    });
+function onMarkerClick(event) {
+  $('#edit-btn').show();
+  console.log("Marker was clicked", event);
+  clickedMarker = event.target;
+}
 
-    $(() => {
-      $.ajax({
-        method: 'GET',
-        url: '/maps/:id/locations'
-      })
-      .done((response) => {
-        $('#edit-btn').prop('disabled', true);
-        console.log("Ajax Response", response);
-
-        //One Location Only
-        //console.log(response.locations[0]);
-        // latLng = {
-        //   lat: Number(response.locations[0].latitude),
-        //   lng: Number(response.locations[0].longitude)
-        // };
-        //marker = L.marker(latLng, {draggable: true}).addTo(map);
-
-        //All Locations
-        for(const location of response.locations) {
-          latLng = {
-            lat: Number(location.latitude),
-            lng: Number(location.longitude)
-          };
-          marker = L.marker(latLng, {draggable: true}).addTo(map);
-          marker.on('click', function() {
-            $('#map').append($("<section id='details'>"));
-          });
-          marker.on('dragstart', onMarkerClick);
-        }
-      });
-    });
-  });
+$('#edit-btn').on('click', function(e) {
+  console.log("Button Clicked", e);
+  clickedMarker.dragging.enable();
+  clickedMarker.on('dragstart', onMarkerDrag);
+  //clickedMarker.on('dragend', onMarkerDrop);
 });
+
+$('#edit-btn').on('blur', function(e) {
+  $('#edit-btn').hide();
+});
+
+
+// $(document).ready(function() {
+//   let latLng;
+//   $('#edit-btn').on('click', function() {
+//     //map.removeLayer(marker);        //Only removes 1 marker
+//     //Send this to the query to INSERT into the favourites Table
+//     //Removes all markers
+//     map.eachLayer((layer) => {
+//       if (layer instanceof L.Marker) {
+//          layer.remove();
+//       }
+//     });
+
+//     $(() => {
+//       $.ajax({
+//         method: 'GET',
+//         url: '/maps/:id/locations'
+//       })
+//       .done((response) => {
+//         // $('#edit-btn').prop('disabled', true);
+//         console.log("Ajax Response", response);
+
+//         //One Location Only
+//         //console.log(response.locations[0]);
+//         // latLng = {
+//         //   lat: Number(response.locations[0].latitude),
+//         //   lng: Number(response.locations[0].longitude)
+//         // };
+//         //marker = L.marker(latLng, {draggable: true}).addTo(map);
+
+//         //All Locations
+//         for(const location of response.locations) {
+//           latLng = {
+//             lat: Number(location.latitude),
+//             lng: Number(location.longitude)
+//           };
+//           marker = L.marker(latLng, {draggable: true}).addTo(map);
+
+//           marker.on('dragstart', onMarkerDrag);
+//         }
+//       });
+//     });
+//   });
+// });
