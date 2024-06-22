@@ -20,14 +20,33 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/addLocation.js"></script>
 </head>
 
 <body>
   <h1>Map view</h1>
 
+  <button class="add-location-button">Add Location</button>
+
   <div id="map">
     <p>WHERE'S THE MAP</p>
+  </div>
+
+  <!--New location form to appear over the map-->
+  <div class="new-location">
+    <h2>Add new location</h2>
+    <form class="new-location-form" action="/location/new" method="post">
+      <label for="title">Title:</label>
+      <input type="text" class="title" name="title" required>
+      <br>
+      <label for="description">Description:</label>
+      <input type="text" class="description" name="description" required>
+      <br>
+      <label for="image">Image:</label>
+      <input type="text" class="image" name="image" required>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
   </div>
 
 </body>
