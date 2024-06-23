@@ -24,8 +24,14 @@ function onMarkerDrag(e){
 function onMarkerDrop(event) {
   console.log("New Position:", this._latlng);
   newLatLng = this._latlng;
+  console.log("New LatLng:", newLatLng);
+
+  const $form = $(this).find($('form'));
+  $form.children($(".lat").children($("<input>")).val(newLatLng.lat));
+  $form.children($(".lng").children($("<input>")).val(newLatLng.lng));
+
+  //$(this).find($('form').children($("<input>")).val(`${newLatLng.lat}, ${newLatLng.lng} `));
   clickedMarker.dragging.disable();
-  // return newLatLng;
 };
 
 $(() => {
@@ -53,7 +59,15 @@ $(() => {
       marker.on('click', onMarkerClick);
     }
   });
+
 });
+
+// $('form').on('submit', function (event) {
+//   //$(this).children($("<input>").val(newLatLng));
+//   //console.log(newLatLng);
+//   const test = $(this).children($("<input>").val());
+//   console.log("Test", test);
+// })
 
 function onMarkerClick(event) {
   $('#edit-btn').show();
@@ -71,6 +85,7 @@ $('#edit-btn').on('click', function(e) {
 $('#edit-btn').on('blur', function(e) {
   $('#edit-btn').hide();
 });
+
 
 
 // $(document).ready(function() {

@@ -12,6 +12,8 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/:id/locations', (req, res) => {
+  //const paramId = res.cookie().req.headers.cookie.split("=")[4];
+  console.log("RES", res.cookie().req.headers.cookie.split("=")[4]);
   console.log("Map", req.params.id);
   // console.log("In route", req.params.id);
   locationQueries.getLocations(req.params.id)
@@ -34,6 +36,18 @@ router.get('/:id/locations', (req, res) => {
 router.post('/:id/locations', (req, res) => {
   console.log("Okay...");
   console.log(req.body);
+  console.log(req.body.lat);
+  console.log(req.body.lng);
+  console.log(req.params.id);
+  const locationData = {
+    lat: req.body.lat,
+    lng: req.body.lng,
+    map_id: req.params.id
+  }
+  saveLocationQueries.saveLocations(locationData)
+    .then((newLocation) => {
+      res.json({newLocation});
+    });
 });
 
 module.exports = router;

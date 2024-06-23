@@ -26,8 +26,14 @@
 <body>
   <h1>Enlarged Map</h1>
   <div id="map"></div>
-  
-  <form action="/maps/:id/locations" method="POST">
+
+  <form action="/maps/<%=mapId%>/locations" method="POST">
+    <div class="lat">
+      <input type="hidden" name="lat">
+    </div>
+    <div class="lng">
+      <input type="hidden" name="lng">
+    </div>
     <button type="submit" id="save-btn">Save</button>
   </form>
   <button type="button" id="edit-btn">Edit</button>
