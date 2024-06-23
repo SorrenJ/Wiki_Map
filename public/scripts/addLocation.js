@@ -33,21 +33,16 @@ function onMapClick(e) {
       image: $('.new-location-image').val(),
       longitude: e.latlng.lng,
       latitude: e.latlng.lat,
-      // mapId: req.params.id,
-      // userId: req.cookie.session
+      mapId: null,
+      userId: null
     };
-    console.log(newLocationObj);
 
-    const params = new URLSearchParams(newLocationObj);
-    const newLocationSerialized = params.toString();
-
-    console.log(newLocationSerialized);
 
     // AJAX request to submit form data
     $.ajax({
       url: '/location/new',
       method: 'POST',
-      data: newLocationSerialized,
+      data: newLocationObj,
       success: () =>
         console.log("Location successfully added"),
       error: function (error) {
