@@ -35,15 +35,15 @@
   <!--New location form to appear over the map-->
   <div class="new-location">
     <h2>Add new location</h2>
-    <form class="new-location-form" action="/location/new" method="post">
+    <form class="new-location-form" method="POST" action="/location/new">
       <label for="title">Title:</label>
-      <input type="text" class="title" name="title" required>
+      <input type="text" class="new-location-title" name="title">
       <br>
       <label for="description">Description:</label>
-      <input type="text" class="description" name="description" required>
+      <input type="text" class="new-location-description" name="description">
       <br>
       <label for="image">Image:</label>
-      <input type="text" class="image" name="image" required>
+      <input type="text" class="new-location-image" name="image">
       <br>
       <button type="submit">Submit</button>
     </form>

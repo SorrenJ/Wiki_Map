@@ -1,5 +1,3 @@
-const addLocation = require("../../db/queries/addLocation");
-
 var map = L.map('map').setView([43.651070, -79.347015], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -21,43 +19,52 @@ function onMapClick(e) {
   $('.new-location').css('display', 'block');
 
   // Handle form submission
-  $('.new-location-form').submit(function (event) {
+  const $form = $('.new-location-form');
+
+  $form.on('submit', (event) => {
     event.preventDefault();
 
+    // TODO this is to grab userID from local storage (session) and add it to the newLocationObj
+    // console.log(localStorage.getItem('userId'));
+
     const newLocationObj = {
-      title: $('.title').val(),
-      description: $('.description').val(),
-      image: $('.image').val(),
+      title: $('.new-location-title').val(),
+      description: $('.new-location-description').val(),
+      image: $('.new-location-image').val(),
       longitude: e.latlng.lng,
       latitude: e.latlng.lat,
-      map_id: req.params.id,
-      user_id: req.cookie.session
+      // mapId: req.params.id,
+      // userId: req.cookie.session
     };
+    console.log(newLocationObj);
 
-    addLocation(newLocationObj);
+    const params = new URLSearchParams(newLocationObj);
+    const newLocationSerialized = params.toString();
 
-    //   // AJAX request to submit form data
-    //   $.ajax({
-    //     type: 'POST',
-    //     url: '/location/new',
-    //     data: newLocationObj,
-    //     success: function (response) {
-    //       addLocation(newLocationObj); -----------------------------------------------------------
-    //     },
-    //     error: function (error) {
-    //       console.error('Error submitting form:', error);
-    //     }
-    //   })
-  });
+    console.log(newLocationSerialized);
 
-  // Hide form
-  $('.new-location').css('display', 'none');
+    // AJAX request to submit form data
+    $.ajax({
+      url: '/location/new',
+      method: 'POST',
+      data: newLocationSerialized,
+      success: () =>
+        console.log("Location successfully added"),
+      error: function (error) {
+        console.error('Error submitting form:', error);
+      }
+    })
+    // });
+
+    // Hide form
+    $('.new-location').css('display', 'none');
 
 
-  // });
+    // });
 
-  // Removes event listener after 1 marker(location) has been added.
-  map.off('click', onMapClick);
+    // Removes event listener after 1 marker(location) has been added.
+    map.off('click', onMapClick);
+  })
 }
 
 // Doesn't let the new marker to be positioned in the map until the 'Add Location' button is hit
