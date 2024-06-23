@@ -27,16 +27,21 @@ function onMapClick(e) {
     // TODO this is to grab userID from local storage (session) and add it to the newLocationObj
     // console.log(localStorage.getItem('userId'));
 
+    const path = window.location.pathname;
+    const segments = path.split('/');
+    const mapIdPath = segments[segments.length - 1];
+
     const newLocationObj = {
       title: $('.new-location-title').val(),
       description: $('.new-location-description').val(),
       image: $('.new-location-image').val(),
       longitude: e.latlng.lng,
       latitude: e.latlng.lat,
-      mapId: null,
+      mapId: mapIdPath,
       userId: null
     };
 
+    console.log(window.location);
 
     // AJAX request to submit form data
     $.ajax({
