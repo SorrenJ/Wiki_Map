@@ -2,9 +2,9 @@ const db = require('../connection');
 
 const saveLocations = (newLocationData) => {
   const {
-    loc_id,
     lng,
     lat,
+    loc_id
   } = newLocationData;
 
   console.log(lng, lat, loc_id);

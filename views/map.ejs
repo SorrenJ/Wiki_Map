@@ -27,6 +27,8 @@
   <h1>Enlarged Map</h1>
   <div id="map"></div>
 
+  <article type="hidden" id="map_id" data-currentmap="<%=mapId%>"></article>
+
   <form action="/maps/<%=mapId%>/locations" method="POST">
     <div class="location_id">
       <input type="hidden" name="location_id">

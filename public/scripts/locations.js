@@ -35,8 +35,11 @@ function onMarkerDrop(event) {
 };
 
 $(() => {
-  console.log("Front end cookie", document.cookie.split("=")[2]);     //Use document.cookie to get Front-end/Client side cookie
-  const mapId = document.cookie.split("=")[2];
+  // console.log("Front end cookie", document.cookie.split("=")[2]);     //Use document.cookie to get Front-end/Client side cookie
+  // const mapId = document.cookie.split("=")[2];
+
+  const mapId = $("#map_id").data("currentmap");      //Access the data attribute of the #map_id element
+  console.log("Current Map", mapId);
   // $.ajax({
   //   method: 'GET',
   //   url: `/maps/:id/locations`
@@ -56,11 +59,12 @@ $(() => {
         lng: Number(location.longitude)
       };
       marker = L.marker(newLatLng).addTo(map);
-      console.log("Current location Id", location.id);
+
       //marker.on('click', onMarkerClick);
 
       //Trigger the click event handler and pass that event along with the location.id for selected marker as args to the onMarkerClick function
       marker.on('click', function(e) {
+        console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
       });
     }

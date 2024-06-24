@@ -41,9 +41,9 @@ router.post('/:id/locations', (req, res) => {
   console.log(req.body.lng);
   console.log(req.params.id);
   const locationData = {
-    loc_id: req.body.location_id,
     lat: req.body.lat,
     lng: req.body.lng,
+    loc_id: req.body.location_id
   }
   saveLocationQueries.saveLocations(locationData)
     .then((newLocation) => {
