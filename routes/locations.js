@@ -13,7 +13,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/locations', (req, res) => {
   //const paramId = res.cookie().req.headers.cookie.split("=")[4];
-  console.log("RES", res.cookie().req.headers.cookie.split("=")[4]);
+  // console.log("RES", res.cookie().req.headers.cookie.split("=")[4]);
   console.log("Map", req.params.id);
   // console.log("In route", req.params.id);
   locationQueries.getLocations(req.params.id)
