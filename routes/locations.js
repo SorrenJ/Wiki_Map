@@ -3,7 +3,7 @@ const router = express.Router();
 const locationQueries = require('../db/queries/fetch_locations');
 const saveLocationQueries = require('../db/queries/save_updated_locations');
 const newLocationQueries = require('../db/queries/addLocation');
-
+const deleteMarkerQueries = require('../db/queries/deleteMarker');
 
 router.get('/:id', (req, res) => {
   console.log("Requested Map", req.params.id);
@@ -69,5 +69,17 @@ router.post('/:id/locations/new', (req, res) => {
       return Promise.reject(err);
     });
 });
+
+router.post('/:id/locations/delete', (req, res) => {
+  console.log("Okay...");
+  const locationData = {
+    loc_id: req.body.location_id
+  }
+  deleteMarkerQueries.deleteMarker(locationData)
+    .then((newLocation) => {
+      res.json({newLocation});
+    });
+});
+
 
 module.exports = router;

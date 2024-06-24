@@ -29,6 +29,8 @@
 </head>
 
 <body>
+
+  <!-- Bushra's code -->
   <h1>Enlarged Map</h1>
   <div id="map"></div>
 
@@ -50,7 +52,7 @@
   <button type="button" id="edit-btn">Edit</button>
 
   <button class="add-location-button">Add Location</button>
-
+  <!-- Sorren's code -->
   <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
   <form action="/users" method="POST">
     <input type="hidden" name="userId" value="1"> <!-- Example user ID -->
@@ -58,17 +60,26 @@
     <button id="favorite_button" type="submit">Favorite</button>
 </form>
 
-<button type="button" id="delete-btn">Delete</button>
+<form action="/maps/<%=mapId%>/locations/delete" method="POST">
+
+  <div class="location_id">
+    <input type="hidden" name="location_id">
+  </div>
+
+  <button type="submit" id="delete-btn">Delete</button>
+
+</form>
+
+
 
   <div class ="location_desc">
     <h1>Starbucks</h1>
     <h1>Favorite an Item</h1>
    
     </div>
-  <div id="map" style='z-index:1'>
-    <p>WHERE'S THE MAP</p>
-  <div id="map">
-  </div>
+ 
+
+<!-- Jorge's code -->
 
   <div class="hidden-map-id" data-map-id="<%=mapId%>">
   </div>

@@ -28,13 +28,24 @@ $(() => {
       marker.on('click', function(e) {
         console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
-      });
+     });
+     
     }
   });
 });
 
+$('#delete-btn').on('click', function() {
+  alert("clicked on delete");
+
+
+  clickedMarker.on('click', function() {
+  map.removeLayer(clickedMarker);
+});
+});
+
 function onMarkerClick(event, locationId) {
   $('#edit-btn').show();
+  $('#delete-btn').show();
   console.log(`Marker ${locationId} was clicked`);
   console.log(event);
 
@@ -57,6 +68,7 @@ $('#edit-btn').on('blur', function(e) {
 });
 
 $('#edit-btn').hide();
+$('#delete-btn').hide();
 
 function onMarkerDrag(e){
   //Trigger dragend on selected marker

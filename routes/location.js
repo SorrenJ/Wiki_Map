@@ -50,16 +50,7 @@ router.post('/:id/locations', (req, res) => {
     });
 });
 
-router.post('/:id/locations/delete', (req, res) => {
-  console.log("Okay...");
-  const locationData = {
-    loc_id: req.body.location_id
-  }
-  deleteMarkerQueries.deleteMarker(locationData)
-    .then((newLocation) => {
-      res.json({newLocation});
-    });
-});
+
 
 
 
