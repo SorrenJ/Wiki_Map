@@ -4,7 +4,7 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
 
 router.get('/:id', (req, res) => {
-  // console.log(req.body);
+  // console.log(req.params);
   // const mapId = req.params.id;
   // const templateVars = {
   //   mapId

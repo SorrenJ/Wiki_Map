@@ -41,7 +41,7 @@ function onMapClick(e) {
       userId: null
     };
 
-    console.log(window.location);
+    // console.log(mapId);
 
     // AJAX request to submit form data
     $.ajax({
