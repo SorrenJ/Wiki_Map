@@ -25,10 +25,10 @@
 
 <body>
   <h1>Create new map</h1>
-  <form action="/" method="POST">
+  <form action="/location/new" method="POST">
     <label for="map_title">Map title</label>
     <textarea name="text" id="map_title"></textarea>
-    
+
     <label for="location_title">Location title</label>
     <textarea name="text" id="location_title"></textarea>
 
@@ -36,14 +36,12 @@
     <label for="upload_image">Upload image</label>
     <textarea name="text" id="upload_image"></textarea>
 
-   
-      <button type="submit" id="newMap">Create</button>
-   
-    
+
+    <button type="submit" id="newMap">Create</button>
+
+
   </form>
-  <div id="map" style="height: 50vh">
-    <p>WHERE'S THE MAP</p>
-  </div>
+  <div id="map" style="height: 50vh"></div>
 
 </body>
 

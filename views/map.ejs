@@ -24,10 +24,32 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/deleteLocation.js"></script>
   <!-- <script defer src="/scripts/deleteLocation_old1.js"></script> -->
+  <script defer src="/scripts/addLocation.js"></script>
+  <script defer src="/scripts/locations.js"></script>
 </head>
 
 <body>
-  <h1>Map view</h1>
+  <h1>Enlarged Map</h1>
+  <div id="map"></div>
+
+  <article id="map_id" data-currentmap="<%=mapId%>"></article>
+  </article>
+
+  <form action="/maps/<%=mapId%>/locations" method="POST">
+    <div class="location_id">
+      <input type="hidden" name="location_id">
+    </div>
+    <div class="lat">
+      <input type="hidden" name="lat">
+    </div>
+    <div class="lng">
+      <input type="hidden" name="lng">
+    </div>
+    <button type="submit" id="save-btn">Save</button>
+  </form>
+  <button type="button" id="edit-btn">Edit</button>
+
+  <button class="add-location-button">Add Location</button>
 
   <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
   <form action="/users" method="POST">
@@ -45,6 +67,26 @@
     </div>
   <div id="map" style='z-index:1'>
     <p>WHERE'S THE MAP</p>
+  <div id="map">
+  </div>
+
+  <div class="hidden-map-id" data-map-id="<%=mapId%>">
+  </div>
+  <!--New location form to appear over the map-->
+  <div class="new-location">
+    <h2>Add new location</h2>
+    <form class="new-location-form" method="POST" action="/maps/<%=mapId%>/locations/new">
+      <label for="title">Title:</label>
+      <input type="text" class="new-location-title" name="title">
+      <br>
+      <label for="description">Description:</label>
+      <input type="text" class="new-location-description" name="description">
+      <br>
+      <label for="image">Image:</label>
+      <input type="text" class="new-location-image" name="image">
+      <br>
+      <button type="submit">Submit</button>
+    </form>
   </div>
 
 

@@ -1,12 +1,12 @@
 // Client facing scripts here
 
 // Client facing scripts here
-const map = L.map('map').setView([43.651070, -79.347015], 13);
+// const map = L.map('map').setView([43.651070, -79.347015], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//   maxZoom: 19,
+//   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// }).addTo(map);
 
 
 // Add a few markers
