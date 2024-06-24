@@ -5,15 +5,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-
-
-// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-
 function onMapClick(e) {
-  alert(e.latlng);
-
   var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-  console.log(e.latlng);
 
   // Shows the form
   $('.new-location').css('display', 'block');
@@ -24,24 +17,15 @@ function onMapClick(e) {
   $form.on('submit', (event) => {
     event.preventDefault();
 
-    // TODO this is to grab userID from local storage (session) and add it to the newLocationObj
-    // console.log(localStorage.getItem('userId'));
-
-    const path = window.location.pathname;
-    const segments = path.split('/');
-    const mapIdPath = segments[segments.length - 1];
-
     const newLocationObj = {
       title: $('.new-location-title').val(),
       description: $('.new-location-description').val(),
       image: $('.new-location-image').val(),
       longitude: e.latlng.lng,
       latitude: e.latlng.lat,
-      mapId: mapIdPath,
+      mapId: $('.hidden-map-id').data('map - id'),
       userId: null
     };
-
-    // console.log(mapId);
 
     // AJAX request to submit form data
     $.ajax({
@@ -54,13 +38,9 @@ function onMapClick(e) {
         console.error('Error submitting form:', error);
       }
     })
-    // });
 
     // Hide form
     $('.new-location').css('display', 'none');
-
-
-    // });
 
     // Removes event listener after 1 marker(location) has been added.
     map.off('click', onMapClick);

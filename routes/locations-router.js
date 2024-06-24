@@ -10,7 +10,6 @@ router.post('/new', (req, res) => {
   const image = req.body.image;
   const longitude = req.body.longitude;
   const latitude = req.body.latitude;
-  // TODO: fix this when ready
   const mapId = req.body.mapId === "" ? null : req.body.mapId;
   const userId = req.body.userId === "" ? null : req.body.userId;
 
@@ -29,7 +28,6 @@ router.post('/new', (req, res) => {
     .catch((err) => {
       console.log(err.message);
       return Promise.reject(err);
-      //res.redirect('/maps/:id')
     });
 });
 
