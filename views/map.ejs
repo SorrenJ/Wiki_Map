@@ -21,22 +21,41 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/addLocation.js"></script>
+  <script defer src="/scripts/locations.js"></script>
 </head>
 
 <body>
-  <h1>Map view</h1>
+  <h1>Enlarged Map</h1>
+  <div id="map"></div>
+
+  <article id="map_id" data-currentmap="<%=mapId%>"></article>
+  </article>
+
+  <form action="/maps/<%=mapId%>/locations" method="POST">
+    <div class="location_id">
+      <input type="hidden" name="location_id">
+    </div>
+    <div class="lat">
+      <input type="hidden" name="lat">
+    </div>
+    <div class="lng">
+      <input type="hidden" name="lng">
+    </div>
+    <button type="submit" id="save-btn">Save</button>
+  </form>
+  <button type="button" id="edit-btn">Edit</button>
 
   <button class="add-location-button">Add Location</button>
 
   <div id="map">
   </div>
 
-  <div class="hidden-map-id" data-map-id="<%= mapId %>">
+  <div class="hidden-map-id" data-map-id="<%=mapId%>">
   </div>
   <!--New location form to appear over the map-->
   <div class="new-location">
     <h2>Add new location</h2>
-    <form class="new-location-form" method="POST" action="/location/new">
+    <form class="new-location-form" method="POST" action="/maps/<%=mapId%>/locations/new">
       <label for="title">Title:</label>
       <input type="text" class="new-location-title" name="title">
       <br>

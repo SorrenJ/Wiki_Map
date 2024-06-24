@@ -20,15 +20,18 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/locations.js"></script>
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <h1>Enlarged Map</h1>
+  <div id="map"></div>
 
-  <div id="map">
-    <p>WHERE'S THE MAP</p>
-  </div>
+  <form action="/:id/locations" method="POST">
+    <button type="submit" id="save-btn">Save</button>
+    <button type="reset" id="cancel-btn">Cancel</button>
+  </form>
+
 
 </body>
 

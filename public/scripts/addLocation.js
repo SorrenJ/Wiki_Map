@@ -1,9 +1,9 @@
-var map = L.map('map').setView([43.651070, -79.347015], 13);
+// var map = L.map('map').setView([43.651070, -79.347015], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//   maxZoom: 19,
+//   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// }).addTo(map);
 
 function onMapClick(e) {
   var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
@@ -23,13 +23,14 @@ function onMapClick(e) {
       image: $('.new-location-image').val(),
       longitude: e.latlng.lng,
       latitude: e.latlng.lat,
-      mapId: $('.hidden-map-id').data('map - id'),
+      mapId: $('.hidden-map-id').data('map-id'),
       userId: null
     };
 
+    console.log(newLocationObj.mapId);
     // AJAX request to submit form data
     $.ajax({
-      url: '/location/new',
+      url: `/maps/${newLocationObj.mapId}/locations/new`,
       method: 'POST',
       data: newLocationObj,
       success: () =>
