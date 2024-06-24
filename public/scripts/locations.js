@@ -7,8 +7,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
-let marker, newLatLng;
-let clickedMarker;
+let marker, locationId, newLatLng, clickedMarker;
 
 $('#edit-btn').hide();
 
@@ -26,9 +25,10 @@ function onMarkerDrop(event) {
   newLatLng = this._latlng;
   console.log("New LatLng:", newLatLng);
 
+  //Traverse the DOM to find the form
   const $form = $(this).find($('form'));
-  $form.children($(".lat").children($("<input>")).val(newLatLng.lat));
-  $form.children($(".lng").children($("<input>")).val(newLatLng.lng));
+  $form.children($(".lat").children($("<input>")).val(newLatLng.lat));          //Locate the <div> element with class lat and update its <input> element value
+  $form.children($(".lng").children($("<input>")).val(newLatLng.lng));          //Locate the <div> element with class lat and update its <input> element value
 
   //$(this).find($('form').children($("<input>")).val(`${newLatLng.lat}, ${newLatLng.lng} `));
   clickedMarker.dragging.disable();
@@ -56,7 +56,13 @@ $(() => {
         lng: Number(location.longitude)
       };
       marker = L.marker(newLatLng).addTo(map);
-      marker.on('click', onMarkerClick);
+      console.log("Current location Id", location.id);
+      //marker.on('click', onMarkerClick);
+
+      //Trigger the click event handler and pass that event along with the location.id for selected marker as args to the onMarkerClick function
+      marker.on('click', function(e) {
+        onMarkerClick(e, location.id)
+      });
     }
   });
 
@@ -69,9 +75,14 @@ $(() => {
 //   console.log("Test", test);
 // })
 
-function onMarkerClick(event) {
+function onMarkerClick(event, locationId) {
   $('#edit-btn').show();
   console.log("Marker was clicked", event);
+  console.log("Marker ID", locationId);
+
+  const $form = $(this).find($('form'));
+  $form.children($(".location_id").children($("<input>")).val(locationId));          //Locate the <div> element with class location_id and update its <input> element value
+
   clickedMarker = event.target;
 }
 

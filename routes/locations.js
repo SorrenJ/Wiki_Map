@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const locationQueries = require('../db/queries/fetch_locations');
-const saveLocationQueries = require('../db/queries/save_locations');
+const saveLocationQueries = require('../db/queries/save_updated_locations');
 
 
 router.get('/:id', (req, res) => {
@@ -36,13 +36,14 @@ router.get('/:id/locations', (req, res) => {
 router.post('/:id/locations', (req, res) => {
   console.log("Okay...");
   console.log(req.body);
+  console.log("Location", req.body.location_id);
   console.log(req.body.lat);
   console.log(req.body.lng);
   console.log(req.params.id);
   const locationData = {
+    loc_id: req.body.location_id,
     lat: req.body.lat,
     lng: req.body.lng,
-    map_id: req.params.id
   }
   saveLocationQueries.saveLocations(locationData)
     .then((newLocation) => {
