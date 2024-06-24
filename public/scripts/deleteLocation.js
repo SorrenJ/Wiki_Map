@@ -9,58 +9,27 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-// L.marker([43.651070, -79.347015]).addTo(map);
+// Add a few markers
+addMarker(43.651070, -79.347015);
+addMarker(45.651070, -79.347015);
+addMarker(46.651070, -79.347015);
 
-map.on("click", function(e){ 
-    var marker = new L.marker([e.latlng.lat, e.latlng.lng])
-    .addTo(map);
+
+// Function to add a marker with a click event listener
+function addMarker(lat, lng) {
+  
+  var marker = L.marker([lat, lng]).addTo(map);
+ 
+  $('#delete-btn').on('click', function() {
+    alert("clicked on delete");
+ 
+ 
+  marker.on('click', function() {
+    map.removeLayer(marker);
   });
 
-$(document).ready(function() {
-
-
-
-  let marker, latLng;
-  $('#delete-btn').on('click', function(e) {
-    $(() => {
-      $.ajax({
-        method: 'GET',
-        url: '/maps/:id'
-      })
-      .done((response) => {
-        //$('#delete-btn').attr('disabled');
-        console.log(response);
-        // console.log(response.locations[0]);
-        alert("clicked on delete");
-        // latLng = {
-        //   lat: Number(response.locations[0].latitude),
-        //   lng: Number(response.locations[0].longitude)
-        // };
-
-        // map.on("click", function(e){ 
-        //     var marker = new L.marker([e.latlng.lat, e.latlng.lng])
-        //     .addTo(map).on('click', e=> e.target.remove());
-        //   });
-
-
-        var marker = new L.marker([e.latlng.lat, e.latlng.lng])
-            // const marker = this;
-    
-            btn.addEventListener("click", function () {
-                e.target.remove();
-          
-              map.removeLayer(marker);
-            });
-   
-
-
-
-   
-      });
-    });
-  });
 });
 
-// make a button function here jquery
 
-// $("$favorite")
+}
+
