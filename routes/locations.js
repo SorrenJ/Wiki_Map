@@ -8,7 +8,7 @@ router.get('/:id', (req, res) => {
   console.log("Requested Map", req.params.id);
   const mapId = req.params.id;        //Get map id (:id) from req.params.id
   res.cookie('map_id', mapId);        //Set map id as map_id in respond cookie
-  res.render("map", {mapId});                  //Load to map.ejs
+  res.render("map", { mapId });                  //Load to map.ejs
 });
 
 router.get('/:id/locations', (req, res) => {
