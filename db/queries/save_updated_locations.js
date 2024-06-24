@@ -7,8 +7,6 @@ const saveLocations = (newLocationData) => {
     loc_id
   } = newLocationData;
 
-  console.log(lng, lat, loc_id);
-
   return db.query(`
     UPDATE locations
     SET longitude = $1, latitude = $2
