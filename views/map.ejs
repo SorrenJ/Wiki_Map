@@ -52,11 +52,12 @@
   <button type="button" id="edit-btn">Edit</button>
 
   <button class="add-location-button">Add Location</button>
+ 
   <!-- Sorren's code -->
   <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
-  <form action="/users" method="POST">
-    <input type="hidden" name="userId" value="1"> <!-- Example user ID -->
-    <input type="hidden" name="mapId" value="3"> <!-- Example item ID -->
+  <form action="/favorites" method="POST">
+    <!-- <input type="hidden" name="userId" value="1">  -->
+    <input type="hidden" name="mapId" value="<%=mapId%>"> 
     <button id="favorite_button" type="submit">Favorite</button>
 </form>
 

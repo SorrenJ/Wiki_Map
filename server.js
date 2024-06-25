@@ -17,6 +17,8 @@ app.set('view engine', 'ejs');
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 app.use(
   '/styles',
   sassMiddleware({
@@ -34,6 +36,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/mapView');
 const locationRoutes = require('./routes/locations');
+const favoriteRoutes = require('./routes/favorite');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -42,7 +45,8 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps', locationRoutes);
-app.use(cookieParser());
+app.use('/favorites', favoriteRoutes);
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -50,6 +54,12 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
   res.render('createMap');
 });
+
+app.get('/login/:id', (req, res) => {
+  res.cookie('userId', req.params.id);
+  res.redirect('/');
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
