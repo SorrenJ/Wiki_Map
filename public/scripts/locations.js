@@ -29,7 +29,7 @@ $(() => {
         console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
      });
-     
+
     }
   });
 });
@@ -37,10 +37,9 @@ $(() => {
 $('#delete-btn').on('click', function() {
   alert("clicked on delete");
 
-
   clickedMarker.on('click', function() {
   map.removeLayer(clickedMarker);
-});
+  });
 });
 
 function onMarkerClick(event, locationId) {
