@@ -32,8 +32,8 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const mapsRoutes = require('./routes/mapView');
 const locationRoutes = require('./routes/locations');
+const createMapRoutes = require('./routes/create-map');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,6 +41,7 @@ const locationRoutes = require('./routes/locations');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+app.use('/maps/new', createMapRoutes);
 app.use('/maps', locationRoutes);
 app.use(cookieParser());
 // Home page
@@ -48,7 +49,7 @@ app.use(cookieParser());
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('createMap');
+  res.render('create-map');
 });
 
 app.listen(PORT, () => {

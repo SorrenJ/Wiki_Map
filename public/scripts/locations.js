@@ -29,7 +29,7 @@ $(() => {
         console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
      });
-     
+
     }
   });
 });
@@ -45,6 +45,7 @@ $('#delete-btn').on('click', function() {
 
 function onMarkerClick(event, locationId) {
   $('#edit-btn').show();
+  $('#save-btn').show();
   $('#delete-btn').show();
   console.log(`Marker ${locationId} was clicked`);
   console.log(event);
@@ -67,6 +68,8 @@ $('#edit-btn').on('blur', function(e) {
   $('#edit-btn').hide();
 });
 
+$('#edit-btn').hide();
+$('#save-btn').hide();
 $('#edit-btn').hide();
 $('#delete-btn').hide();
 
