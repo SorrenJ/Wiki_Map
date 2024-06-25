@@ -10,12 +10,12 @@ router.post('/', (req, res) => {
   console.log("In Post", req.body.text);      //Form 'Text' inputs from request body
   const mapTitle = req.body.text[0];
   const mapDescription = req.body.text[1];
-  // const mapImage = req.body.text[2];
+  const mapThumbnailUrl = req.body.text[2];
 
   const mapInfo = {
     mapTitle,
     mapDescription,
-    // mapImage
+    mapThumbnailUrl
   };
 
   createMapQueries.addMap(mapInfo)

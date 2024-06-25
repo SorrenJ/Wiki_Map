@@ -4,13 +4,14 @@ const addMap = (mapData) => {
   const {
     mapTitle,
     mapDescription,
+    mapThumbnailUrl
   } = mapData;
 
   return db.query(`
-    INSERT INTO maps (title, description, user_id)
-    VALUES ($1, $2, 3)
+    INSERT INTO maps (title, description, thumbnail_photo_url, user_id)
+    VALUES ($1, $2, $3, 3)
     RETURNING *;
-  `, [mapData.mapTitle, mapData.mapDescription])
+  `, [mapData.mapTitle, mapData.mapDescription, mapThumbnailUrl])
     .then(data => {
       return data.rows[0];
     })
