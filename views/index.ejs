@@ -20,15 +20,30 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/home.js"></script>
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <h1>WIKIMAPS</h1>
+  <% for (const map of maps) { %>
+    <div class="map-link">
+      <a href="/maps/<%= map.id %>">
+        <h3>Map <%= map.id %>
+            <%= map.title %>
+        </h3>
+        <div class="map-container" id="map<%= map.id %>"></div>
+      </a>
+      <br>
+    </div>
+    <% } %>
 
+
+
+      <!--
   <div id="map">
     <p>WHERE'S THE MAP</p>
   </div>
+-->
 
 </body>
 

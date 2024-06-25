@@ -34,6 +34,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/mapView');
 const locationRoutes = require('./routes/locations');
+const allMapsQueries = require('./db/queries/fetchAllMaps');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -48,7 +49,18 @@ app.use(cookieParser());
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('createMap');
+  allMapsQueries.getAllMaps()
+    .then(allMaps => {
+      const templateVars = {
+        maps: allMaps
+      };
+      console.log(templateVars);
+      res.render('index', templateVars);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Error retrieving maps:', err);
+    });
 });
 
 app.listen(PORT, () => {
