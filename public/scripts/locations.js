@@ -34,6 +34,7 @@ $(() => {
           $(".location-image").remove();
           clickedMarker.dragging.disable();
         }
+        
         const $title = $("<section class=location-title>").text(location.title);
         const $description = $("<section class=location-description>").text(location.description);
         // const $img = $("<img class=location-image>").attr('src', location.image);
@@ -91,6 +92,9 @@ $('#edit-btn').on('click', function(e) {
 $('#cancel-btn').on('click', function() {
   $('#cancel-btn').hide();
   $('#save-btn').hide();
+  $(".location-title").remove();
+  $(".location-description").remove();
+  $(".location-image").remove();
   clickedMarker.dragging.disable();
   clickedMarker = undefined;
 });

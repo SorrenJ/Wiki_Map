@@ -45,7 +45,7 @@ body {
 
 .add-location-button {
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   right: 20px;
   z-index: 500;
   cursor: pointer;
@@ -55,4 +55,45 @@ body {
   position: absolute;
   width:100%;
   background:rgb(28, 36, 71);
+}
+
+
+#edit-btn {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  z-index: 500;
+  cursor: pointer;
+}
+
+#save-btn {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  z-index: 500;
+  cursor: pointer;
+}
+
+#cancel-btn {
+  position: absolute;
+  bottom: 50px;
+  left: 140px;
+  z-index: 500;
+  cursor: pointer;
+}
+
+#delete-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+  z-index: 500;
+  cursor: pointer;
+}
+
+.location-details {
+  border-style: dotted;
+  border-width: thick;
+  border-color: purple;
+  height: 20vh;
+  font-size: larger;
 }
