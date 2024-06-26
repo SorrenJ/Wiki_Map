@@ -29,76 +29,81 @@
   <script defer src="/scripts/locations.js"></script>
 </head>
 
-<body>
+<%- include('partials/_header') %>
+
+  <body>
 
 
-  <h1>Enlarged Map</h1>
-  <div id="map"></div>
+    <h1>Enlarged Map<%= mapId %>
+    </h1>
+    <div id="map"></div>
 
-  <article id="map_id" data-currentmap="<%=mapId%>"></article>
-  </article>
+    <article id="map_id" data-currentmap="<%=mapId%>"></article>
+    </article>
 
-  <form action="/maps/<%=mapId%>/locations" method="POST">
-    <div class="location_id">
-      <input type="hidden" name="location_id">
-    </div>
-    <div class="lat">
-      <input type="hidden" name="lat">
-    </div>
-    <div class="lng">
-      <input type="hidden" name="lng">
-    </div>
-    <button type="submit" id="save-btn">Save</button>
-  </form>
-  <button type="button" id="edit-btn">Edit</button>
-
- 
-
-  <!-- Sorren's code -->
-  <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
-  <form action="/favorites" method="POST">
-    <!-- <input type="hidden" name="userId" value="1">  -->
-    <input type="hidden" name="mapId" value="<%=mapId%>"> 
-    <button id="favorite_button" type="submit">Favorite</button>
-  </form>
-
-  <form action="/maps/<%=mapId%>/locations/delete" method="POST">
-
-    <div class="location_id">
-      <input type="hidden" name="location_id">
-    </div>
-
-    <button type="submit" id="delete-btn">Delete</button>
-
-  </form>
-
-  <div class="location_desc">
-    <h1>Starbucks</h1>
-    <h1>Favorite an Item</h1>
-  </div>
-
-
-  <!-- Jorge's code -->
-  <button class="add-location-button">Add Location</button>
-  <div class="hidden-map-id" data-map-id="<%=mapId%>">
-  </div>
-
-  <div class="new-location">
-    <h2>Add new location</h2>
-    <form class="new-location-form" method="POST" action="/maps/new/:id">
-      <label for="title">Title:</label>
-      <input type="text" class="new-location-title" id="title" name="title">
-      <br>
-      <label for="description">Description:</label>
-      <input type="text" class="new-location-description" id="description" name="description">
-      <br>
-      <label for="image">Image:</label>
-      <input type="text" class="new-location-image" id="image" name="image">
-      <br>
-      <button type="submit">Submit</button>
+    <form action="/maps/<%=mapId%>/locations" method="POST">
+      <div class="location_id">
+        <input type="hidden" name="location_id">
+      </div>
+      <div class="lat">
+        <input type="hidden" name="lat">
+      </div>
+      <div class="lng">
+        <input type="hidden" name="lng">
+      </div>
+      <button type="submit" id="save-btn">Save</button>
     </form>
-  </div>
+    <button type="button" id="edit-btn">Edit</button>
 
-</body>
+
+
+    <!-- Sorren's code -->
+    <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i>
+      <p>Favorite Restaurants</p>
+    </span>
+    <form action="/favorites" method="POST">
+      <!-- <input type="hidden" name="userId" value="1">  -->
+      <input type="hidden" name="mapId" value="<%=mapId%>">
+      <button id="favorite_button" type="submit">Favorite</button>
+    </form>
+
+    <form action="/maps/<%=mapId%>/locations/delete" method="POST">
+
+      <div class="location_id">
+        <input type="hidden" name="location_id">
+      </div>
+
+      <button type="submit" id="delete-btn">Delete</button>
+
+    </form>
+
+    <div class="location_desc">
+      <h1>Starbucks</h1>
+      <h1>Favorite an Item</h1>
+    </div>
+
+
+    <!-- Jorge's code -->
+    <button class="add-location-button">Add Location</button>
+    <div class="hidden-map-id" data-map-id="<%=mapId%>">
+    </div>
+
+    <div class="new-location">
+      <h2>Add new location</h2>
+      <form class="new-location-form" method="POST" action="/maps/new/:id">
+        <label for="title">Title:</label>
+        <input type="text" class="new-location-title" id="title" name="title">
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" class="new-location-description" id="description" name="description">
+        <br>
+        <label for="image">Image:</label>
+        <input type="text" class="new-location-image" id="image" name="image">
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </body>
 
 </html>

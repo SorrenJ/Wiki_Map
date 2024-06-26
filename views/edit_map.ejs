@@ -23,16 +23,19 @@
   <script defer src="/scripts/locations.js"></script>
 </head>
 
-<body>
-  <h1>Enlarged Map</h1>
-  <div id="map"></div>
+<%- include('partials/_header') %>
 
-  <form action="/:id/locations" method="POST">
-    <button type="submit" id="save-btn">Save</button>
-    <button type="reset" id="cancel-btn">Cancel</button>
-  </form>
+  <body>
+    <h1>Enlarged Map<%= mapId %>
+    </h1>
+    <div id="map"></div>
+
+    <form action="/:id/locations" method="POST">
+      <button type="submit" id="save-btn">Save</button>
+      <button type="reset" id="cancel-btn">Cancel</button>
+    </form>
 
 
-</body>
+  </body>
 
 </html>
