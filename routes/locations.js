@@ -30,14 +30,14 @@ router.post('/:id/locations', (req, res) => {
   console.log("Post successful...", req.body);
   console.log("Location", req.body.location_id);
   console.log(req.body.lat, req.body.lng, req.params.id);
-  const locationData = {
+  const editedLocationData = {
     lat: req.body.lat,
     lng: req.body.lng,
     loc_id: req.body.location_id
   }
-  saveLocationQueries.saveLocations(locationData)
-    .then((modifiedLocation) => {
-      res.json({ modifiedLocation });
+  saveLocationQueries.saveLocations(editedLocationData)
+    .then((editedLocation) => {
+      res.json({ editedLocation });
     });
 });
 
@@ -76,8 +76,8 @@ router.post('/:id/locations/delete', (req, res) => {
     loc_id: req.body.location_id
   }
   deleteMarkerQueries.deleteMarker(locationData)
-    .then((newLocation) => {
-      res.json({newLocation});
+    .then((deletedLocation) => {
+      res.json({deletedLocation});
     });
 });
 
