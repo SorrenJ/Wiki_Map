@@ -13,10 +13,13 @@ $(() => {
     for(const fav of response.favorites) {
       console.log("Map ID", fav.map_id);
       console.log("Title", fav.map_title);
-      let $aside = $("<aside class='fav_map_id'>").data("fav-mapId", fav.map_id);
-      let $a = $("<a>").attr('href', `http://localhost:8080/maps/${fav.map_id}`).text(fav.map_title);
-      let $li = $("<li>").append($a);
-      $(".my-favs").append($li, $aside);
+
+      const $a = $("<a>").attr('href', `http://localhost:8080/maps/${fav.map_id}`);
+      $(".fav-map").wrap($a);
+      const $img = $("<img>").attr('src', fav.map_thumbnail_url);
+      const $aside = $("<aside class='fav_map_id'>").data("fav-mapId", fav.map_id);
+      const $li = $("<li>").text(fav.map_title);
+      $(".fav-map").append($li, $aside, $img);
     }
   });
 
@@ -30,10 +33,13 @@ $(() => {
     for(const contribution of results.contributions) {
       console.log("Map ID", contribution.map_id);
       console.log("Title", contribution.map_title);
-      let $aside = $("<aside class='contribution_map_id'>").data("contribution-mapId", contribution.map_id);
-      let $a = $("<a>").attr('href', `http://localhost:8080/maps/${contribution.map_id}`).text(contribution.map_title);
-      let $li = $("<li>").append($a);
-      $(".my-contributions").append($li, $aside);
+
+      const $a = $("<a>").attr('href', `http://localhost:8080/maps/${contribution.map_id}`);
+      $(".contri-map").wrap($a);
+      const $img = $("<img>").attr('src', contribution.map_thumbnail_url);
+      const $aside = $("<aside class='contribution_map_id'>").data("contribution-mapId", contribution.map_id);
+      const $li = $("<li>").text(contribution.map_title);
+      $(".contri-map").append($li, $aside, $img);
     }
   });
 });
