@@ -19,18 +19,19 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/deleteLocation.js"></script>
-  <!-- <script defer src="/scripts/deleteLocation_old1.js"></script> -->
   <script defer src="/scripts/addLocation.js"></script>
   <script defer src="/scripts/locations.js"></script>
 </head>
 
 <body>
 
-  <!-- Bushra's code -->
+
   <h1>Enlarged Map</h1>
   <div id="map"></div>
 
@@ -51,68 +52,52 @@
   </form>
   <button type="button" id="edit-btn">Edit</button>
 
-  <button class="add-location-button">Add Location</button>
+
+
   <!-- Sorren's code -->
   <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
-  <form action="/users" method="POST">
-    <input type="hidden" name="userId" value="1"> <!-- Example user ID -->
-    <input type="hidden" name="mapId" value="3"> <!-- Example item ID -->
+  <form action="/favorites" method="POST">
+    <!-- <input type="hidden" name="userId" value="1">  -->
+    <input type="hidden" name="mapId" value="<%=mapId%>">
     <button id="favorite_button" type="submit">Favorite</button>
-</form>
+  </form>
 
-<form action="/maps/<%=mapId%>/locations/delete" method="POST">
+  <form action="/maps/<%=mapId%>/locations/delete" method="POST">
 
-  <div class="location_id">
-    <input type="hidden" name="location_id">
-  </div>
-
-  <button type="submit" id="delete-btn">Delete</button>
-
-</form>
-
-
-
-  <div class ="location_desc">
-    <h1>Starbucks</h1>
-    <h1>Favorite an Item</h1>
-
+    <div class="location_id">
+      <input type="hidden" name="location_id">
     </div>
 
+    <button type="submit" id="delete-btn">Delete</button>
 
-<!-- Jorge's code -->
+  </form>
 
+  <div class="location_desc">
+    <h1>Starbucks</h1>
+    <h1>Favorite an Item</h1>
+  </div>
+
+
+  <!-- Jorge's code -->
+  <button class="add-location-button">Add Location</button>
   <div class="hidden-map-id" data-map-id="<%=mapId%>">
   </div>
-  <!--New location form to appear over the map-->
+
   <div class="new-location">
     <h2>Add new location</h2>
-    <form class="new-location-form" method="POST" action="/maps/<%=mapId%>/locations/new">
+    <form class="new-location-form" method="POST" action="/maps/new/:id">
       <label for="title">Title:</label>
-      <input type="text" class="new-location-title" name="title">
+      <input type="text" class="new-location-title" id="title" name="title">
       <br>
       <label for="description">Description:</label>
-      <input type="text" class="new-location-description" name="description">
+      <input type="text" class="new-location-description" id="description" name="description">
       <br>
       <label for="image">Image:</label>
-      <input type="text" class="new-location-image" name="image">
+      <input type="text" class="new-location-image" id="image" name="image">
       <br>
       <button type="submit">Submit</button>
     </form>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
