@@ -32,7 +32,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const mapsRoutes = require('./routes/mapView');
+const loginRoutes = require('./routes/login');
 const locationRoutes = require('./routes/locations');
 
 // Mount all resource routes
@@ -42,6 +42,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps', locationRoutes);
+app.use('/login', loginRoutes);
 app.use(cookieParser());
 // Home page
 // Warning: avoid creating more routes in this file!
