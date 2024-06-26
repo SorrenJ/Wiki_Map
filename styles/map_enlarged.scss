@@ -1,0 +1,58 @@
+body {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // min-height: 100vh;
+
+  background: rgb(163, 208, 219);
+  background: linear-gradient(227deg,
+      rgba(163, 208, 219, 1) 0%,
+      rgba(163, 176, 219, 1) 20%,
+      rgba(163, 173, 219, 1) 34%,
+      rgba(163, 219, 208, 1) 59%,
+      rgba(163, 208, 219, 1) 74%,
+      rgba(163, 208, 219, 1) 100%);
+}
+
+#map {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+ 
+}
+
+
+.location_desc{
+  position:absolute;
+  z-index:1000;
+  background-color: rgb(26, 226, 26);
+}
+
+.new-location {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: none;
+  z-index: 510;
+}
+
+.new-location-form {}
+
+.add-location-button {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  z-index: 500;
+  cursor: pointer;
+}
+
+.testClass{
+  position: absolute;
+  width:100%;
+  background:rgb(201, 255, 6);
+}
