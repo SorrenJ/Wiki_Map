@@ -16,35 +16,49 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
+ 
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/login.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <!-- <script defer src="/scripts/login.js"></script> -->
 </head>
 
-<body>
+<body class="body-home-page">
   <%- include('partials/_header') %>
 
-    <main>
-      <h3>Login</h3>
+<main>
+      <div class="login-container">
       <form class="login-form" action="/login" method="POST">
+        <h3>Login</h3>
+        <div class="input-group">
         <section class="email-form">
           <label for="email">Email Address</label>
           <input class="email" type="email" name="email" placeholder="Enter Email" id="email" />
         </section>
+      </div>
+      <div class="input-group">
         <section class="password-form">
           <label for="password">Password </label>
           <input class="password" type="password" name="password" placeholder="Password" id="password" />
         </section>
+      </div>
         <section class="submit">
           <button type="submit" class="login-btn">Login</button>
         </section>
       </form>
+    </br>
       <section class="registration-link">
         Don't have an account? <a href="/register">Register here</a>
       </section>
+    </div>
+
+   
     </main>
+ 
+  
+
 </body>
 
 </html>
