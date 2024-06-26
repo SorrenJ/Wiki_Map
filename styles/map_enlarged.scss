@@ -19,11 +19,13 @@ body {
   position: relative;
   height: 100vh;
   width: 100%;
+ 
 }
 
-.location_desc {
-  position: absolute;
-  z-index: 1000;
+
+.location_desc{
+  position:absolute;
+  z-index:1000;
   background-color: rgb(26, 226, 26);
 }
 
@@ -49,15 +51,8 @@ body {
   cursor: pointer;
 }
 
-.map-link {
-  border: 5px solid darkblue;
-}
-
-.map-container {
-  height: 200px;
-  width: 400px;
-}
-
-.map-image {
-  height: 200px;
+.testClass{
+  position: absolute;
+  width:100%;
+  background:rgb(28, 36, 71);
 }

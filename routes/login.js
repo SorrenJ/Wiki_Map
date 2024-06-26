@@ -7,16 +7,27 @@
 
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../db/queries/users');
+const loginQueries = require('../db/queries/login');
 
 router.get('/', (req, res) => {
+  console.log("login GET");
   res.render("login");
 });
 
-router.get('/', (req, res) => {
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
+router.post('/', (req, res) => {
+  console.log("POST", req.body);
+  const userEmail = req.body.email;
+  const userPassword = req.body.password;
+  const userData = {
+    email: userEmail,
+    password: userPassword
+  }
+  console.log("Userdata", userData);
+  loginQueries.getLoggedInUser(userData)
+    .then(user => {
+      res.cookie('userId', user.id);
+      res.redirect('/');
+      //res.json({ user });
     })
     .catch(err => {
       res
