@@ -43,6 +43,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps/new', createMapRoutes);
 app.use('/maps', locationRoutes);
+app.use('/login', loginRoutes);
 app.use(cookieParser());
 // Home page
 // Warning: avoid creating more routes in this file!
