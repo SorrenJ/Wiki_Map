@@ -4,9 +4,9 @@
 <head>
   <title>Users</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -17,36 +17,28 @@
   <script defer src="/scripts/login.js"></script>
 </head>
 
-<body>
-  <main">
-    <h3>Login</h3>
-    <form class="login-form" action="/login" method="POST">
-      <section class="email-address">
-        <label for="email">Email address </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter email"
-        />
-      </section>
-      <section class="password">
-        <label for="password">Password </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-        />
-      </section>
-      <section class="login">
-        <button type="submit" class="login-btn">Login</button>
-      </section>
-    </form>
-    <section class="registration-link">
+<%- include('partials/_header') %>
+
+  <body>
+    <main">
+      <h3>Login</h3>
+      <form class="login-form" action="/login" method="POST">
+        <section class="email-address">
+          <label for="email">Email address </label>
+          <input type="email" name="email" id="email" placeholder="Enter email" />
+        </section>
+        <section class="password">
+          <label for="password">Password </label>
+          <input type="password" name="password" id="password" placeholder="Password" />
+        </section>
+        <section class="login">
+          <button type="submit" class="login-btn">Login</button>
+        </section>
+      </form>
+      <section class="registration-link">
         Don't have an account? <a href="/register">Register here</a>
-    </section>
-  </main>
-</body>
+      </section>
+      </main>
+  </body>
 
 </html>
