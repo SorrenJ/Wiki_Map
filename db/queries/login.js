@@ -1,11 +1,17 @@
 const db = require('../connection');
 
-const getLoggedInUser = (userEmail) => {
+const getLoggedInUser = (user) => {
+  console.log("Query", user)
+  const {
+    email,
+    password
+  } = user
   return db.query(`
     SELECT id, username
-    FROM users WHERE map_id = $1;`, [userEmail])
+    FROM users WHERE email = $1 AND password = $2;`, [user.email, user.password])
     .then(data => {
-      return data.rows;
+      console.log(data.rows);
+      return data.rows[0];
     });
 };
 

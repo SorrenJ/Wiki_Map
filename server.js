@@ -34,6 +34,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
+const loginRoutes = require('./routes/login');
 const profileRoutes = require('./routes/profile');
 const locationRoutes = require('./routes/locations');
 const favoriteRoutes = require('./routes/favorite');
@@ -48,6 +49,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps/new', createMapRoutes);
 app.use('/maps', locationRoutes);
+app.use('/login', loginRoutes);
 app.use('/favorites', favoriteRoutes);
 
 app.use('/profiles', profileRoutes);

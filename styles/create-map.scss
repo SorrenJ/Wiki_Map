@@ -1,0 +1,23 @@
+$font-stack: Georgia, serif;
+$primary-color: #0b0503;
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  font: xx-large $font-stack;
+  font-weight: bold;
+  color: $primary-color
+}
+
+form {
+  margin: 1em;
+}
+
+label, input {
+  display: flex;
+  font-size: large;
+  font-weight: bold;
+  color: brown;
+}

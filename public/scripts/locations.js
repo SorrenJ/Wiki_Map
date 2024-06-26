@@ -26,9 +26,29 @@ $(() => {
 
       //Trigger the click event handler and pass that event along with the location.id for selected marker as args to the onMarkerClick function
       marker.on('click', function(e) {
+        if(clickedMarker) {
+          $('#cancel-btn').hide();
+          $('#save-btn').hide();
+          $(".location-title").remove();
+          $(".location-description").remove();
+          $(".location-image").remove();
+          clickedMarker.dragging.disable();
+        }
+        const $title = $("<section class=location-title>").text(location.title);
+        const $description = $("<section class=location-description>").text(location.description);
+        const $img = $("<img class=location-image>").attr('src', location.image);
+        $(".location-details").append($title, $description, $img);
         console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
      });
+
+     map.on('click', function(e) {
+      $(".location-title").remove();
+      $(".location-description").remove();
+      $(".location-image").remove();
+      $('#edit-btn').hide();
+      $('#delete-btn').hide();
+     })
 
     }
   });
@@ -44,8 +64,8 @@ $('#delete-btn').on('click', function() {
 
 function onMarkerClick(event, locationId) {
   $('#edit-btn').show();
-  $('#save-btn').show();
   $('#delete-btn').show();
+
   console.log(`Marker ${locationId} was clicked`);
   console.log(event);
 
@@ -56,23 +76,37 @@ function onMarkerClick(event, locationId) {
 }
 
 $('#edit-btn').on('click', function(e) {
+  $('#edit-btn').hide();
+  $('#delete-btn').hide();
+  $('#save-btn').show();
+  $('#cancel-btn').show();
   console.log("Edit Button Clicked", e);
+
   //Enable the Marker Drag feature
   clickedMarker.dragging.enable();
   //Trigger dragstart on selected marker
   clickedMarker.on('dragstart', onMarkerDrag);
 });
 
-$('#edit-btn').on('blur', function(e) {
-  $('#edit-btn').hide();
+$('#cancel-btn').on('click', function() {
+  $('#cancel-btn').hide();
+  $('#save-btn').hide();
+  clickedMarker.dragging.disable();
+  clickedMarker = undefined;
 });
+
+
+// $('#edit-btn').on('blur', function(e) {
+//   $('#edit-btn').hide();
+// });
 
 $('#edit-btn').hide();
 $('#save-btn').hide();
-$('#edit-btn').hide();
+$('#cancel-btn').hide();
 $('#delete-btn').hide();
 
 function onMarkerDrag(e){
+  $('#edit-btn').hide();
   //Trigger dragend on selected marker
   this.on('dragend', onMarkerDrop);
 }
@@ -89,4 +123,8 @@ function onMarkerDrop(event) {
 
   //Disable the Marker Drag feature
   clickedMarker.dragging.disable();
+  clickedMarker.on('click', () => {
+    $('#save-btn').show();
+    $('#cancel-btn').show();
+  })
 };
