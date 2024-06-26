@@ -55,7 +55,7 @@ body {
   align-items: center;
   border: 5px solid darkblue;
   background-color: rgba(11, 109, 148, 0.9);
-  margin: 25px 50px;
+  margin: 25px auto;
   max-width: 600px;
   min-width: 350px;
 }
@@ -104,4 +104,8 @@ body .body-home-page {
 
 .body-home-page h3 {
   color: rgb(253, 253, 253);
+}
+
+.all-maps {
+  margin: auto;
 }
