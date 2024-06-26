@@ -26,7 +26,8 @@ router.post('/', (req, res) => {
 
   addFavorites({ userId, mapId })
     .then(favorite => {
-        res.json({ favorite });
+      res.redirect('profiles');
+        //res.json({ favorite });
     })
     .catch(err => {
       console.error(err);

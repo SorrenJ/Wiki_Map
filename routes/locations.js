@@ -18,6 +18,10 @@ router.get('/:id', (req, res) => {
       }
       res.render("map", { mapInfo });                  //Load to map.ejs
     })
+    .catch((err) => {
+      console.log(err.message);
+      return Promise.reject(err);
+    });
 });
 
 router.get('/:id/locations', (req, res) => {
@@ -47,6 +51,10 @@ router.post('/:id/locations', (req, res) => {
     .then((editedLocation) => {
       const mapId = editedLocation.map_id;
       res.redirect(`/maps/${mapId}`);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return Promise.reject(err);
     });
 });
 
@@ -80,13 +88,20 @@ router.post('/:id/locations/new', (req, res) => {
 });
 
 router.post('/:id/locations/delete', (req, res) => {
-  console.log("Okay...");
+  console.log("Okay...", req.body.location_id);
   const locationData = {
     loc_id: req.body.location_id
   }
   deleteMarkerQueries.deleteMarker(locationData)
     .then((deletedLocation) => {
-      res.json({deletedLocation});
+      console.log("Deleted MAP ID", deletedLocation.map_id);
+      const mapId = deletedLocation.map_id;
+      res.redirect(`/maps/${mapId}`);
+      //res.json({deletedLocation});
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return Promise.reject(err);
     });
 });
 

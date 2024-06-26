@@ -36,8 +36,8 @@ $(() => {
         }
         const $title = $("<section class=location-title>").text(location.title);
         const $description = $("<section class=location-description>").text(location.description);
-        const $img = $("<img class=location-image>").attr('src', location.image);
-        $(".location-details").append($title, $description, $img);
+        // const $img = $("<img class=location-image>").attr('src', location.image);
+        $(".location-details").append($title, $description);
         console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
      });
