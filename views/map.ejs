@@ -30,39 +30,34 @@
 </head>
 
 <body>
-
-
-  <h1>Enlarged Map</h1>
+  <h1><%= mapInfo.title %></h1>
   <div id="map"></div>
 
-  <article id="map_id" data-currentmap="<%=mapId%>"></article>
+  <article id="map_id" data-currentmap="<%=mapInfo.mapId%>"></article>
   </article>
 
-  <form action="/maps/<%=mapId%>/locations" method="POST">
-    <div class="location_id">
+  <form action="/maps/<%=mapInfo.mapId%>/locations" method="POST">
+    <section class="location_id">
       <input type="hidden" name="location_id">
-    </div>
-    <div class="lat">
+    </section>
+    <section class="lat">
       <input type="hidden" name="lat">
-    </div>
-    <div class="lng">
+    </section>
+    <section class="lng">
       <input type="hidden" name="lng">
-    </div>
+    </section>
     <button type="submit" id="save-btn">Save</button>
   </form>
+  <button type="button" id="cancel-btn">Cancel</button>
   <button type="button" id="edit-btn">Edit</button>
 
-
+  <article class="location-details">
+    <section class="location-image"></section>
+  </article>
 
   <!-- Sorren's code -->
-  <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
-  <form action="/favorites" method="POST">
-    <!-- <input type="hidden" name="userId" value="1">  -->
-    <input type="hidden" name="mapId" value="<%=mapId%>">
-    <button id="favorite_button" type="submit">Favorite</button>
-  </form>
 
-  <form action="/maps/<%=mapId%>/locations/delete" method="POST">
+  <form action="/maps/<%=mapInfo.mapId%>/locations/delete" method="POST">
 
     <div class="location_id">
       <input type="hidden" name="location_id">
@@ -72,15 +67,16 @@
 
   </form>
 
-  <div class="location_desc">
-    <h1>Starbucks</h1>
-    <h1>Favorite an Item</h1>
-  </div>
-
+  <span style="display:inline"><i class="fa-regular fa-star" style="display:inline"></i><p>Favorite Restaurants</p></span>
+  <form action="/favorites" method="POST">
+    <!-- <input type="hidden" name="userId" value="1">  -->
+    <input type="hidden" name="mapId" value="<%=mapInfo.mapId%>">
+    <button id="favorite_button" type="submit">Favorite</button>
+  </form>
 
   <!-- Jorge's code -->
   <button class="add-location-button">Add Location</button>
-  <div class="hidden-map-id" data-map-id="<%=mapId%>">
+  <div class="hidden-map-id" data-map-id="<%=mapInfo.mapId%>">
   </div>
 
   <div class="new-location">

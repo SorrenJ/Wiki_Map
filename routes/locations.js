@@ -4,12 +4,20 @@ const locationQueries = require('../db/queries/fetch_locations');
 const saveLocationQueries = require('../db/queries/save_updated_locations');
 const newLocationQueries = require('../db/queries/addLocation');
 const deleteMarkerQueries = require('../db/queries/deleteMarker');
+const mapDetailQueries = require('../db/queries/fetchMapDetails');
 
 router.get('/:id', (req, res) => {
   console.log("Requested Map", req.params.id);
   const mapId = req.params.id;                   //Get map id (:id) from req.params.id
   res.cookie('map_id', mapId);                   //Set map id as map_id in respond cookie
-  res.render("map", { mapId });                  //Load to map.ejs
+  mapDetailQueries.getMapDetails(mapId)
+    .then(mapDetails => {
+      const mapInfo = {
+        mapId: mapDetails.id,
+        title: mapDetails.title
+      }
+      res.render("map", { mapInfo });                  //Load to map.ejs
+    })
 });
 
 router.get('/:id/locations', (req, res) => {
@@ -37,7 +45,8 @@ router.post('/:id/locations', (req, res) => {
   }
   saveLocationQueries.saveLocations(editedLocationData)
     .then((editedLocation) => {
-      res.json({ editedLocation });
+      const mapId = editedLocation.map_id;
+      res.redirect(`/maps/${mapId}`);
     });
 });
 
