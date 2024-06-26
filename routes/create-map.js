@@ -20,9 +20,9 @@ router.post('/', (req, res) => {
 
   createMapQueries.addMap(mapInfo)
     .then(newMap => {
-      res.json({newMap});
-      //const newMapId = newMap.id;
-      //res.redirect(`/maps/${newMapId}`);          //Same as res.redirect(`/maps/:id`);
+      //res.json({newMap});
+      const newMapId = newMap.id;
+      res.redirect(`/maps/${newMapId}`);          //Same as res.redirect(`/maps/:id`);
     });
 });
 
