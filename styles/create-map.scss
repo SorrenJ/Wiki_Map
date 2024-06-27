@@ -1,4 +1,7 @@
-$font-stack: Georgia, serif;
+$font-stack: Verdana,
+  Geneva,
+  Tahoma,
+  sans-serif;
 $primary-color: #0b0503;
 
 h1 {
@@ -15,7 +18,8 @@ form {
   margin: 1em;
 }
 
-label, input {
+label,
+input {
   display: flex;
   font-size: large;
   font-weight: bold;
