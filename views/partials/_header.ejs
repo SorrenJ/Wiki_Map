@@ -3,6 +3,15 @@
     <a class="navbar-brand" href="/">
       <h1>WIKIMAPS</h1>
     </a>
-    <a href="/login" class="login-link">LogIn</a>
+
+    <% if (userId) { %>
+      <a href="/maps/new" class="create-link">Create Map</a>
+      <a href="/profiles" class="profiles-link">Profile</a>
+      <form method="post" action="/logout">
+        <button class="logout-btn">LogOut</button>
+      </form>
+      <% } else { %>
+        <a href="/login" class="login-link">LogIn</a>
+        <% } %>
   </nav>
 </header>

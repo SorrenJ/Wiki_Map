@@ -4,14 +4,18 @@ const createMapQueries = require('../db/queries/createMap');
 
 //Middleware
 router.use("/", (req, res, next) => {
-  if(!req.cookies.userId) {
+  if (!req.cookies.userId) {
     return res.redirect("/login");
   }
   next();
 });
 
 router.get('/', (req, res) => {
-  res.render('create-map');
+  const userId = req.cookies.userId;
+  const templateVars = {
+    userId: userId
+  }
+  res.render('create-map', templateVars);
 });
 
 router.post('/', (req, res) => {
