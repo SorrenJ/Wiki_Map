@@ -26,24 +26,29 @@
 <body>
   <%- include('partials/_headerLogged') %>
 
-    <h1>Create new map</h1>
+    <div class="create-map-body">
+      <div class="create-map-container">
+        <h1>Create new map</h1>
 
-    <form action="/maps/new" method="POST">
-      <label for="map-title">Map title</label>
-      <input name="text" id="map-title"></input>
-      <br />
-      <label for="map_description">Description</label>
-      <input name="text" id="map_description"></input>
-      <br />
-      <label for="thumbnail-image">Thumbnail Image URL</label>
-      <input name="text" id="thumbnail-image"></input>
-      <!-- <button type="button" id="image-upload-btn">Upload</button> -->
-      <br />
-      <button type="submit" id="create-map">Create</button>
-    </form>
+        <form action="/maps/new" method="POST" class="create-map-form">
+          <div class="create-map-group">
+            <label for="map-title">Map title</label>
+            <input name="text" id="map-title"></input>
+            <br />
+            <label for="map_description">Description</label>
+            <input name="text" id="map_description"></input>
+            <br />
+            <label for="thumbnail-image">Thumbnail Image URL</label>
+            <input name="text" id="thumbnail-image"></input>
+          </div>
+          <!-- <button type="button" id="image-upload-btn">Upload</button> -->
+          <br />
+          <button type="submit" id="create-map">Create</button>
+        </form>
+      </div>
 
-    <div id="map" style="height: 70vh"></div>
-
+      <div id="map" style="height: 70vh"></div>
+    </div>
 </body>
 
 </html>
