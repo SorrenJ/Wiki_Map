@@ -5,7 +5,7 @@
 $(() => {
   $.ajax({
     method: 'GET',
-    url: `/profiles/userId/favs`
+    url: `/profiles/favs`
   })
   .done((response) => {
     console.log("Response", response);
@@ -18,9 +18,10 @@ $(() => {
 
       const $section = $("<section class='fav-map'>");
       const $img = $("<img>").attr('src', fav.map_thumbnail_url);
+      const $imgDiv = $("<div class='img-container'>").append($img);
       const $aside = $("<aside class='fav_map_id'>").data("fav-mapId", fav.map_id);
       const $li = $("<li>").text(fav.map_title);
-      $section.append($li, $aside, $img);
+      $section.append($li, $aside, $imgDiv);
       $li.wrap($a);
       $img.wrap($a);
       $(".my-favs").append($section);
@@ -29,7 +30,7 @@ $(() => {
 
   $.ajax({
     method: 'GET',
-    url: `/profiles/userId/contributions`
+    url: `/profiles/contributions`
   })
   .done((results) => {
     console.log("Results", results);
@@ -42,9 +43,10 @@ $(() => {
 
       const $section = $("<section class='contri-map'>");
       const $img = $("<img>").attr('src', contribution.map_thumbnail_url);
+      const $imgDiv = $("<div class='img-container'>").append($img);
       const $aside = $("<aside class='contribution_map_id'>").data("contribution-mapId", contribution.map_id);
       const $li = $("<li>").text(contribution.map_title);
-      $section.append($li, $aside, $img);
+      $section.append($li, $aside, $imgDiv);
       $li.wrap($a);
       $img.wrap($a);
       $(".my-contributions").append($section);

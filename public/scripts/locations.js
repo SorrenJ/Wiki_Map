@@ -7,7 +7,33 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let marker, locationId, newLatLng, clickedMarker;
 
+$('#edit-btn').hide();
+$('#save-btn').hide();
+$('#cancel-btn').hide();
+$('#delete-btn').hide();
+$(".location-details").hide();
+
 $(() => {
+  const allCookies = document.cookie.split(';');
+  console.log("All Cookies", allCookies);
+
+  let userCookie, cookieValue;
+
+  for (const cookie of allCookies) {
+    let trimmedCookie = cookie.trim();              //Split all cookies using ; to get the name=value pairs
+    let splitCookies = trimmedCookie.split('=');        //Split name=value pair using = to get name and value separately
+
+    console.log("Split cookies", splitCookies);
+
+    if(splitCookies[0] === 'userId') {
+      userCookie = splitCookies[0];
+      console.log("Name", userCookie);
+      cookieValue = splitCookies[1];
+      console.log("Val", cookieValue);
+      break;
+    }
+  }
+
   const mapId = $("#map_id").data("currentmap");      //Access the 'data' attribute of the #map_id element
   console.log("Current Map", mapId);
   $.ajax({
@@ -29,37 +55,46 @@ $(() => {
         if(clickedMarker) {
           $('#cancel-btn').hide();
           $('#save-btn').hide();
+          $(".location-details").hide();
           $(".location-title").remove();
           $(".location-description").remove();
-          $(".location-image").remove();
+          //$(".location-image").remove();
           clickedMarker.dragging.disable();
         }
-        
+
         const $title = $("<section class=location-title>").text(location.title);
         const $description = $("<section class=location-description>").text(location.description);
-        // const $img = $("<img class=location-image>").attr('src', location.image);
+        //const $img = $("<img class=location-image>").attr('src', location.image);
         $(".location-details").append($title, $description);
+        $(".location-details").show();
         console.log("Current location Id", location.id);
+
+        console.log("What is in the cookie?", userCookie);
+        if(!userCookie) {
+          console.log("Test successful");
+          clickedMarker = this;
+          return;
+        }
         onMarkerClick(e, location.id)
      });
 
      map.on('click', function(e) {
+      $(".location-details").hide();
       $(".location-title").remove();
       $(".location-description").remove();
-      $(".location-image").remove();
+      //$(".location-image").remove();
       $('#edit-btn').hide();
       $('#delete-btn').hide();
      })
-
     }
   });
 });
 
 $('#delete-btn').on('click', function() {
-  alert("clicked on delete");
+  alert("Location Removed");
 
   clickedMarker.on('click', function() {
-  map.removeLayer(clickedMarker);
+    map.removeLayer(clickedMarker);
   });
 });
 
@@ -94,20 +129,11 @@ $('#cancel-btn').on('click', function() {
   $('#save-btn').hide();
   $(".location-title").remove();
   $(".location-description").remove();
-  $(".location-image").remove();
+  //$(".location-image").remove();
   clickedMarker.dragging.disable();
   clickedMarker = undefined;
 });
 
-
-// $('#edit-btn').on('blur', function(e) {
-//   $('#edit-btn').hide();
-// });
-
-$('#edit-btn').hide();
-$('#save-btn').hide();
-$('#cancel-btn').hide();
-$('#delete-btn').hide();
 
 function onMarkerDrag(e){
   $('#edit-btn').hide();

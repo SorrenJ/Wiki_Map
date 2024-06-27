@@ -35,6 +35,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
+const logoutRoutes = require('./routes/logout');
 const profileRoutes = require('./routes/profile');
 const locationRoutes = require('./routes/locations');
 const favoriteRoutes = require('./routes/favorite');
@@ -50,8 +51,8 @@ app.use('/users', usersRoutes);
 app.use('/maps/new', createMapRoutes);
 app.use('/maps', locationRoutes);
 app.use('/login', loginRoutes);
+app.use('/logout', logoutRoutes);
 app.use('/favorites', favoriteRoutes);
-
 app.use('/profiles', profileRoutes);
 app.use(cookieParser());
 // Home page
@@ -73,10 +74,10 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/login/:id', (req, res) => {
-  res.cookie('userId', req.params.id);
-  res.redirect('/');
-});
+// app.get('/login/:id', (req, res) => {
+//   res.cookie('userId', req.params.id);
+//   res.redirect('/');
+// });
 
 
 app.listen(PORT, () => {
