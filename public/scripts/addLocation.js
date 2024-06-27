@@ -5,6 +5,20 @@
 //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 // }).addTo(map);
 
+  const allCookies = document.cookie.split(';');
+  let userCookie;
+  for (const cookie of allCookies) {
+    userCookie = cookie.split('=')[0].trim();
+    if(userCookie !== 'userId') {
+      console.log("Cookie", userCookie);
+      userCookie = undefined;
+      $(".add-location-button").hide();
+    }
+  }
+
+  if(userCookie) {
+    $(".add-location-button").show();
+  }
 function onMapClick(e) {
   var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
 

@@ -38,6 +38,14 @@ router.get('/:id/locations', (req, res) => {
     });
 });
 
+//Middleware
+router.use("/", (req, res, next) => {
+  if(!req.cookies.userId) {
+    return res.redirect("/login");
+  }
+  next();
+});
+
 router.post('/:id/locations', (req, res) => {
   console.log("Post successful...", req.body);
   console.log("Location", req.body.location_id);

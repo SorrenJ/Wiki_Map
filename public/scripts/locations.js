@@ -8,6 +8,16 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let marker, locationId, newLatLng, clickedMarker;
 
 $(() => {
+  const allCookies = document.cookie.split(';');
+  let userCookie;
+  for (const cookie of allCookies) {
+    userCookie = cookie.split('=')[0].trim();
+    if(userCookie !== 'userId') {
+      console.log("Cookie", userCookie);
+      userCookie = undefined;
+    }
+  }
+
   const mapId = $("#map_id").data("currentmap");      //Access the 'data' attribute of the #map_id element
   console.log("Current Map", mapId);
   $.ajax({
@@ -42,6 +52,12 @@ $(() => {
         $(".location-details").append($title, $description);
         $(".location-details").show();
         console.log("Current location Id", location.id);
+
+        console.log("What is in the cookie?", userCookie);
+        if(!userCookie) {
+          console.log("Test successful");
+          return;
+        }
         onMarkerClick(e, location.id)
      });
 
@@ -53,7 +69,6 @@ $(() => {
       $('#edit-btn').hide();
       $('#delete-btn').hide();
      })
-
     }
   });
 });
