@@ -3,33 +3,35 @@ const router = express.Router();
 const favoriteMapsQueries = require('../db/queries/fetch-favorites');
 const contributionMapsQueries = require('../db/queries/fetch-contributions');
 
+//Middleware
+router.use("/", (req, res, next) => {
+  if(!req.cookies.userId) {
+    return res.redirect("/login");
+  }
+  next();
+});
+
 router.get('/', (req, res) => {
   console.log("GET");
   res.render("profile");
-  // favoriteMapsQueries.getFavorites()
-  //   .then(favorites => {
-  //     console.log(favorites);
-  //     res.render("profile", { favorites });
-  //     //res.json({ favorites });
-  //   })
 });
 
-router.get('/userId/favs', (req, res) => {
-  console.log("GET");
-  favoriteMapsQueries.getFavorites()
+router.get('/favs', (req, res) => {
+  const userId = req.cookies.userId;
+  console.log("GET", userId);
+  favoriteMapsQueries.getFavorites(userId)
     .then(favorites => {
       console.log(favorites);
-      //res.render("profile", { favorites });
       res.json({ favorites });
     })
 });
 
-router.get('/userId/contributions', (req, res) => {
-  console.log("GET");
-  contributionMapsQueries.getContributions()
+router.get('/contributions', (req, res) => {
+  const userId = req.cookies.userId;
+  console.log("GET", userId);
+  contributionMapsQueries.getContributions(userId)
     .then(contributions => {
       console.log(contributions);
-      //res.render("profile", { contributions });
       res.json({ contributions });
     })
 });

@@ -5,20 +5,35 @@
 //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 // }).addTo(map);
 
-  const allCookies = document.cookie.split(';');
-  let userCookie;
-  for (const cookie of allCookies) {
-    userCookie = cookie.split('=')[0].trim();
-    if(userCookie !== 'userId') {
-      console.log("Cookie", userCookie);
-      userCookie = undefined;
-      $(".add-location-button").hide();
-    }
-  }
+const allCookies = document.cookie.split(';');          //Split all cookies using ; to get the name=value pairs
+console.log("All Cookies", allCookies);
 
-  if(userCookie) {
-    $(".add-location-button").show();
+let userCookie, cookieValue;
+
+for (const cookie of allCookies) {
+  let trimmedCookie = cookie.trim();
+  let splitCookies = trimmedCookie.split('=');        //Split name=value pair using = to get name and value separately
+
+  console.log("Split cookies", splitCookies);
+
+  if(splitCookies[0] === 'userId') {
+    userCookie = splitCookies[0];
+    console.log("Name", userCookie);
+    cookieValue = splitCookies[1];
+    console.log("Val", cookieValue);
+    break;
   }
+}
+
+$(".add-location-button").hide();
+$("#favorite_button").hide();
+
+
+if(userCookie) {
+  $(".add-location-button").show();
+  $("#favorite_button").show();
+}
+
 function onMapClick(e) {
   var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
 
@@ -38,7 +53,7 @@ function onMapClick(e) {
       longitude: e.latlng.lng,
       latitude: e.latlng.lat,
       mapId: $('.hidden-map-id').data('map-id'),
-      userId: null
+      userId: cookieValue
     };
 
     console.log(newLocationObj.mapId);

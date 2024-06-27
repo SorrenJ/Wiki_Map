@@ -7,14 +7,30 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let marker, locationId, newLatLng, clickedMarker;
 
+$('#edit-btn').hide();
+$('#save-btn').hide();
+$('#cancel-btn').hide();
+$('#delete-btn').hide();
+$(".location-details").hide();
+
 $(() => {
   const allCookies = document.cookie.split(';');
-  let userCookie;
+  console.log("All Cookies", allCookies);
+
+  let userCookie, cookieValue;
+
   for (const cookie of allCookies) {
-    userCookie = cookie.split('=')[0].trim();
-    if(userCookie !== 'userId') {
-      console.log("Cookie", userCookie);
-      userCookie = undefined;
+    let trimmedCookie = cookie.trim();              //Split all cookies using ; to get the name=value pairs
+    let splitCookies = trimmedCookie.split('=');        //Split name=value pair using = to get name and value separately
+
+    console.log("Split cookies", splitCookies);
+
+    if(splitCookies[0] === 'userId') {
+      userCookie = splitCookies[0];
+      console.log("Name", userCookie);
+      cookieValue = splitCookies[1];
+      console.log("Val", cookieValue);
+      break;
     }
   }
 
@@ -42,7 +58,7 @@ $(() => {
           $(".location-details").hide();
           $(".location-title").remove();
           $(".location-description").remove();
-          $(".location-image").remove();
+          //$(".location-image").remove();
           clickedMarker.dragging.disable();
         }
 
@@ -56,6 +72,7 @@ $(() => {
         console.log("What is in the cookie?", userCookie);
         if(!userCookie) {
           console.log("Test successful");
+          clickedMarker = this;
           return;
         }
         onMarkerClick(e, location.id)
@@ -65,7 +82,7 @@ $(() => {
       $(".location-details").hide();
       $(".location-title").remove();
       $(".location-description").remove();
-      $(".location-image").remove();
+      //$(".location-image").remove();
       $('#edit-btn').hide();
       $('#delete-btn').hide();
      })
@@ -74,10 +91,10 @@ $(() => {
 });
 
 $('#delete-btn').on('click', function() {
-  alert("clicked on delete");
+  alert("Location Removed");
 
   clickedMarker.on('click', function() {
-  map.removeLayer(clickedMarker);
+    map.removeLayer(clickedMarker);
   });
 });
 
@@ -112,21 +129,11 @@ $('#cancel-btn').on('click', function() {
   $('#save-btn').hide();
   $(".location-title").remove();
   $(".location-description").remove();
-  $(".location-image").remove();
+  //$(".location-image").remove();
   clickedMarker.dragging.disable();
   clickedMarker = undefined;
 });
 
-
-// $('#edit-btn').on('blur', function(e) {
-//   $('#edit-btn').hide();
-// });
-
-$('#edit-btn').hide();
-$('#save-btn').hide();
-$('#cancel-btn').hide();
-$('#delete-btn').hide();
-$(".location-details").hide();
 
 function onMarkerDrag(e){
   $('#edit-btn').hide();

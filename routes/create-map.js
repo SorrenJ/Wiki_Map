@@ -2,6 +2,14 @@ const express = require('express');
 const router = express.Router();
 const createMapQueries = require('../db/queries/createMap');
 
+//Middleware
+router.use("/", (req, res, next) => {
+  if(!req.cookies.userId) {
+    return res.redirect("/login");
+  }
+  next();
+});
+
 router.get('/', (req, res) => {
   res.render('create-map');
 });

@@ -18,6 +18,13 @@ form {
 label, input {
   display: flex;
   font-size: large;
+}
+
+label {
   font-weight: bold;
   color: brown;
+}
+
+input {
+  border-radius: 5px;
 }

@@ -5,7 +5,7 @@
 $(() => {
   $.ajax({
     method: 'GET',
-    url: `/profiles/userId/favs`
+    url: `/profiles/favs`
   })
   .done((response) => {
     console.log("Response", response);
@@ -30,7 +30,7 @@ $(() => {
 
   $.ajax({
     method: 'GET',
-    url: `/profiles/userId/contributions`
+    url: `/profiles/contributions`
   })
   .done((results) => {
     console.log("Results", results);
