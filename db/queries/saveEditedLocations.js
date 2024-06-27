@@ -12,9 +12,9 @@ const saveLocations = (newLocationData) => {
     SET longitude = $1, latitude = $2
     WHERE id = $3
     RETURNING *;`, [lng, lat, loc_id])
-      .then(data => {
-        return data.rows[0];
-      });
+    .then(data => {
+      return data.rows[0];
+    });
 };
 
 module.exports = { saveLocations };

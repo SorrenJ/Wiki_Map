@@ -19,20 +19,20 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log("In Post", req.body.text);      //Form 'Text' inputs from request body
-  const mapTitle = req.body.text[0];
+  const userId = req.cookies.userId;
+  const mapTitle = req.body.text[0];                //Form 'Text' inputs from request body
   const mapDescription = req.body.text[1];
   const mapThumbnailUrl = req.body.text[2];
 
   const mapInfo = {
     mapTitle,
     mapDescription,
-    mapThumbnailUrl
+    mapThumbnailUrl,
+    userId: userId
   };
 
   createMapQueries.addMap(mapInfo)
     .then(newMap => {
-      //res.json({newMap});
       const newMapId = newMap.id;
       res.redirect(`/maps/${newMapId}`);          //Same as res.redirect(`/maps/:id`);
     });

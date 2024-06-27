@@ -6,7 +6,6 @@ const getAllMaps = () => {
       return data.rows;
     })
     .catch((err) => {
-      console.log(err.message);
       return Promise.reject(err);
     })
 };

@@ -31,9 +31,6 @@ app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 const profileRoutes = require('./routes/profile');
@@ -45,9 +42,6 @@ const createMapRoutes = require('./routes/create-map');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
 app.use('/maps/new', createMapRoutes);
 app.use('/maps', locationRoutes);
 app.use('/login', loginRoutes);
@@ -68,7 +62,6 @@ app.get('/', (req, res) => {
         maps: allMaps,
         userId: userId
       };
-      // console.log(templateVars);
       res.render('index', templateVars);
     })
     .catch(err => {
@@ -76,12 +69,6 @@ app.get('/', (req, res) => {
       res.status(500).send('Error retrieving maps:', err);
     });
 });
-
-// app.get('/login/:id', (req, res) => {
-//   res.cookie('userId', req.params.id);
-//   res.redirect('/');
-// });
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

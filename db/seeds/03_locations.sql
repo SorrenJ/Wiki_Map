@@ -1,26 +1,5 @@
 -- -- Locations Insertions
 
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Ancient Temple', 'A grand temple with intricate carvings.', 'temple.jpg', 34.0522, -118.2437, 1, 2);
-
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Ghostly Grove', 'A grove filled with eerie whispers.', 'grove.jpg', 37.7749, -122.4194, 2, 1);
-
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Mystic Waterfall', 'A beautiful waterfall with sparkling water.', 'waterfall.jpg', 40.7128, -74.0060, 3, 1);
-
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Hidden Spring', 'A hidden spring with crystal-clear water.', 'spring.jpg', 36.1699, -115.1398, 4, 3);
-
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Abandoned Market', 'An old market overtaken by nature.', 'market.jpg', 51.5074, -0.1278, 5, 2);
-
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Gemstone Cave', 'A cave filled with glittering gemstones.', 'cave.jpg', 48.8566, 2.3522, 6, 2);
-
--- INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
--- VALUES ('Royal Catholic Church', 'A vintage church with intricate glasswork.', 'church.jpg', 64.0522, -118.2437, 1, 3);
-
 INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
 VALUES ('CN Tower', 'Tallest tower in Toronto', 'cn_tower.jpg', -79.387207, 43.642578, 1, 1);
 
@@ -80,3 +59,63 @@ VALUES ('Chinatown', 'Vibrant Chinese community and markets', 'chinatown.jpg', -
 
 INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id)
 VALUES ('The Beaches', 'Neighborhood by Lake Ontario', 'the_beaches.jpg', -79.292432, 43.667967, 2, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Park', 'A lovely green park', 'park.jpg', -79.383456, 43.653225, 1, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Restaurant', 'Popular dining spot', 'restaurant.jpg', -79.388124, 43.644691, 2, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Museum', 'Local history museum', 'museum.jpg', -79.394084, 43.670236, 3, 3);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Theater', 'Performing arts center', 'theater.jpg', -79.379095, 43.646838, 4, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Library', 'Public library branch', 'library.jpg', -79.396772, 43.659946, 5, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Coffee Shop', 'Cozy cafe', 'coffee_shop.jpg', -79.385324, 43.648264, 6, 3);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Gym', 'Fitness center', 'gym.jpg', -79.370634, 43.651070, 7, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('School', 'Elementary school', 'school.jpg', -79.358896, 43.654323, 8, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Hospital', 'City hospital', 'hospital.jpg', -79.390495, 43.657564, 9, 3);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Shopping Mall', 'Large shopping center', 'mall.jpg', -79.368706, 43.641386, 10, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Art Gallery', 'Contemporary art gallery', 'gallery.jpg', -79.377609, 43.651894, 1, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Stadium', 'Sports arena', 'stadium.jpg', -79.385798, 43.641008, 2, 3);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Beach', 'Sandy beachfront', 'beach.jpg', -79.417738, 43.640939, 3, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Concert Hall', 'Music venue', 'concert_hall.jpg', -79.387207, 43.647827, 4, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Zoo', 'City zoo', 'zoo.jpg', -79.423859, 43.715086, 5, 3);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Airport', 'International airport', 'airport.jpg', -79.624819, 43.681583, 6, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Park', 'Community park', 'park2.jpg', -79.370346, 43.656518, 7, 2);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Skating Rink', 'Outdoor skating rink', 'skating_rink.jpg', -79.405159, 43.707386, 8, 3);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Hotel', 'Luxury hotel', 'hotel.jpg', -79.380404, 43.646063, 9, 1);
+
+INSERT INTO locations (title, description, image, longitude, latitude, map_id, user_id) 
+VALUES ('Cinema', 'Movie theater', 'cinema.jpg', -79.395936, 43.655518, 10, 2);

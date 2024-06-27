@@ -1,10 +1,4 @@
 body {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  // min-height: 100vh;
-
   background: rgb(163, 208, 219);
   background: linear-gradient(227deg,
       rgba(163, 208, 219, 1) 0%,
@@ -15,16 +9,21 @@ body {
       rgba(163, 208, 219, 1) 100%);
 }
 
+.map-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(96, 43, 96);
+  margin: 20px 40%;
+}
+
 #map {
   position: relative;
   height: 80vh;
   width: 100%;
 }
 
-
-.location_desc{
-  position:absolute;
-  z-index:1000;
+.location_desc {
+  position: absolute;
+  z-index: 1000;
   background-color: rgb(26, 226, 26);
 }
 
@@ -40,8 +39,6 @@ body {
   z-index: 510;
 }
 
-.new-location-form {}
-
 .add-location-button {
   position: absolute;
   bottom: 50px;
@@ -50,10 +47,10 @@ body {
   cursor: pointer;
 }
 
-.testClass{
+.testClass {
   position: absolute;
-  width:100%;
-  background:rgb(28, 36, 71);
+  width: 100%;
+  background: rgb(28, 36, 71);
 }
 
 
@@ -112,12 +109,4 @@ body {
   margin: 20px;
   padding: 10px;
   font-family: sans-serif;
-}
-
-#map {
-  margin-top: 10px;
-}
-
-.negative {
-  color: red;
 }

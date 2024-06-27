@@ -2,13 +2,13 @@ const pool = require('../connection');
 
 
 const addFavorites = function (favorites) {
-    
-    
-    const {
-      userId,
-     mapId
+
+
+  const {
+    userId,
+    mapId
   } = favorites;
-  
+
   // User inputted queries for creating a new property
   const queryString = `
       INSERT INTO favorite_maps (
@@ -18,21 +18,20 @@ const addFavorites = function (favorites) {
       VALUES ($1, $2)
       RETURNING *;
   `;
-  
+
   const queryParams = [
     userId,
     mapId
   ];
-  
-  // Pool query error handling
-  
-  return pool.query(queryString, queryParams)
-  .then(res => {
-    console.log("this map is favoritted:", mapId);
-    return res.rows[0];
-  })
-  .catch(err => console.error('query error', err.stack));
 
-  };
-  
-  module.exports = { addFavorites };
+  // Pool query error handling
+
+  return pool.query(queryString, queryParams)
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(err => console.error('query error', err.stack));
+
+};
+
+module.exports = { addFavorites };

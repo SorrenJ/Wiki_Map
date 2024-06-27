@@ -1,7 +1,6 @@
 const db = require('../connection');
 
 const getContributions = (userId) => {
-  console.log("In Query Contributions", userId);
   return db.query(`
     SELECT maps.id as map_id, maps.title as map_title, maps.thumbnail_photo_url as map_thumbnail_url, users.id as user_id
     FROM maps

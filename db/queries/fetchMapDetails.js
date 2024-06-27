@@ -5,7 +5,6 @@ const getMapDetails = (id) => {
     SELECT *
     FROM maps WHERE id = $1;`, [id])
     .then(data => {
-      console.log("Map Info", data.rows[0]);
       return data.rows[0];
     });
 };

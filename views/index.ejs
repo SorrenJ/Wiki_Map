@@ -20,11 +20,12 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/home.js"></script>
 </head>
 
 <body class="body-home-page">
   <%- include('partials/_header') %>
+
+    <title>Home</title>
 
     <div class="all-maps">
       <% for (const map of maps) { %>
@@ -36,20 +37,11 @@
             <div class="home-map-image-container">
               <img src="<%= map.thumbnail_photo_url %>" class="map-image" alt="Image of <%= map.title %>">
             </div>
-            <!--  <div class="map-container" id="map<%= map.id %>"></div>-->
           </a>
           <br>
         </div>
         <% } %>
     </div>
-
-
-
-    <!--
-  <div id="map">
-    <p>WHERE'S THE MAP</p>
-  </div>
--->
 
 </body>
 

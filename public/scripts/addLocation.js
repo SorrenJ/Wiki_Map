@@ -1,12 +1,4 @@
-// var map = L.map('map').setView([43.651070, -79.347015], 13);
-
-// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//   maxZoom: 19,
-//   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-// }).addTo(map);
-
 const allCookies = document.cookie.split(';');          //Split all cookies using ; to get the name=value pairs
-console.log("All Cookies", allCookies);
 
 let userCookie, cookieValue;
 
@@ -14,13 +6,9 @@ for (const cookie of allCookies) {
   let trimmedCookie = cookie.trim();
   let splitCookies = trimmedCookie.split('=');        //Split name=value pair using = to get name and value separately
 
-  console.log("Split cookies", splitCookies);
-
-  if(splitCookies[0] === 'userId') {
+  if (splitCookies[0] === 'userId') {
     userCookie = splitCookies[0];
-    console.log("Name", userCookie);
     cookieValue = splitCookies[1];
-    console.log("Val", cookieValue);
     break;
   }
 }
@@ -29,7 +17,7 @@ $(".add-location-button").hide();
 $("#favorite_button").hide();
 
 
-if(userCookie) {
+if (userCookie) {
   $(".add-location-button").show();
   $("#favorite_button").show();
 }
@@ -56,7 +44,6 @@ function onMapClick(e) {
       userId: cookieValue
     };
 
-    console.log(newLocationObj.mapId);
     // AJAX request to submit form data
     $.ajax({
       url: `/maps/${newLocationObj.mapId}/locations/new`,
