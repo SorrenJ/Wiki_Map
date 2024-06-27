@@ -10,13 +10,17 @@ router.get('/:id', (req, res) => {
   console.log("Requested Map", req.params.id);
   const mapId = req.params.id;                   //Get map id (:id) from req.params.id
   res.cookie('map_id', mapId);                   //Set map id as map_id in respond cookie
+
+  const userId = req.cookies.userId;
+
   mapDetailQueries.getMapDetails(mapId)
     .then(mapDetails => {
       const mapInfo = {
+        userId: userId,
         mapId: mapDetails.id,
         title: mapDetails.title
       }
-      res.render("map", { mapInfo });                  //Load to map.ejs
+      res.render("map", mapInfo);                  //Load to map.ejs
     })
     .catch((err) => {
       console.log(err.message);
@@ -41,7 +45,7 @@ router.get('/:id/locations', (req, res) => {
 
 //Middleware
 router.use("/", (req, res, next) => {
-  if(!req.cookies.userId) {
+  if (!req.cookies.userId) {
     return res.redirect("/login");
   }
   next();

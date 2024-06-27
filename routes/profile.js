@@ -5,15 +5,19 @@ const contributionMapsQueries = require('../db/queries/fetch-contributions');
 
 //Middleware
 router.use("/", (req, res, next) => {
-  if(!req.cookies.userId) {
+  if (!req.cookies.userId) {
     return res.redirect("/login");
   }
   next();
 });
 
 router.get('/', (req, res) => {
+  const userId = req.cookies.userId;
+  const templateVars = {
+    userId: userId
+  };
   console.log("GET");
-  res.render("profile");
+  res.render("profile", templateVars);
 });
 
 router.get('/favs', (req, res) => {

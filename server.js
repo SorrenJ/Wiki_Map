@@ -60,10 +60,13 @@ app.use(cookieParser());
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  const userId = req.cookies.userId;
+
   allMapsQueries.getAllMaps()
     .then(allMaps => {
       const templateVars = {
-        maps: allMaps
+        maps: allMaps,
+        userId: userId
       };
       // console.log(templateVars);
       res.render('index', templateVars);

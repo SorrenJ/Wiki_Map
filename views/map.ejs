@@ -34,14 +34,14 @@
   <%- include('partials/_header') %>
 
     <h1>
-      <%= mapInfo.title %>
+      <%= title %>
     </h1>
 
     <!-- Sorren's code -->
 
     <form action="/favorites" method="POST">
       <!-- <input type="hidden" name="userId" value="1">  -->
-      <input type="hidden" name="mapId" value="<%=mapInfo.mapId%>">
+      <input type="hidden" name="mapId" value="<%=mapId%>">
       <button id="favorite_button" type="submit">Favorite</button>
     </form>
 
@@ -49,10 +49,10 @@
 
     <!-- Bushra's code -->
 
-    <article id="map_id" data-currentmap="<%=mapInfo.mapId%>"></article>
+    <article id="map_id" data-currentmap="<%=mapId%>"></article>
     </article>
 
-    <form action="/maps/<%=mapInfo.mapId%>/locations" method="POST">
+    <form action="/maps/<%=mapId%>/locations" method="POST">
       <section class="location_id">
         <input type="hidden" name="location_id">
       </section>
@@ -71,7 +71,7 @@
 
     <!-- Sorren's code -->
 
-    <form action="/maps/<%=mapInfo.mapId%>/locations/delete" method="POST">
+    <form action="/maps/<%=mapId%>/locations/delete" method="POST">
 
       <div class="location_id">
         <input type="hidden" name="location_id">
@@ -82,7 +82,7 @@
 
     <!-- Jorge's code -->
     <button class="add-location-button">Add Location</button>
-    <div class="hidden-map-id" data-map-id="<%=mapInfo.mapId%>">
+    <div class="hidden-map-id" data-map-id="<%=mapId%>">
     </div>
 
     <div class="new-location">
