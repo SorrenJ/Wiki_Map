@@ -6,8 +6,9 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const loginQueries = require('../db/queries/login');
+const allMapsQueries = require('../db/queries/fetchAllMaps');
 
 router.get('/', (req, res) => {
   console.log("login GET");
@@ -23,11 +24,26 @@ router.post('/', (req, res) => {
     password: userPassword
   }
   console.log("Userdata", userData);
+
+  let templateVars;
+
   loginQueries.getLoggedInUser(userData)
     .then(user => {
       res.cookie('userId', user.id);
-      res.redirect('/');
+      return user.id;
+      // res.render('index', templateVars);
       //res.json({ user });
+    })
+    .then(userId => {
+      allMapsQueries.getAllMaps()
+        .then(allMaps => {
+          const templateVars = {
+            userId,
+            maps: allMaps
+          };
+          console.log('TEMPLATE VARS ------------', templateVars);
+          res.render('index', templateVars);
+        })
     })
     .catch(err => {
       res

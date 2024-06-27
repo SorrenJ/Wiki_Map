@@ -31,11 +31,13 @@
 </head>
 
 <body>
-  <%- include('partials/_headerLogged') %>
+  <%- include('partials/_header') %>
 
     <h1>
       <%= mapInfo.title %>
     </h1>
+
+    <!-- Sorren's code -->
 
     <form action="/favorites" method="POST">
       <!-- <input type="hidden" name="userId" value="1">  -->
@@ -44,6 +46,8 @@
     </form>
 
     <div id="map"></div>
+
+    <!-- Bushra's code -->
 
     <article id="map_id" data-currentmap="<%=mapInfo.mapId%>"></article>
     </article>

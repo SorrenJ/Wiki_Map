@@ -110,7 +110,8 @@ body .body-home-page {
   margin: auto;
 }
 
-.login-link {
+.login-link,
+.logout-btn {
   font-size: 18px;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -119,6 +120,10 @@ body .body-home-page {
   padding: 10px;
   border-radius: 4px;
   text-decoration: none;
+}
+
+.logout-btn {
+  border: none;
 }
 
 .create-link {

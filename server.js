@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
       const templateVars = {
         maps: allMaps
       };
-      console.log(templateVars);
+      // console.log(templateVars);
       res.render('index', templateVars);
     })
     .catch(err => {
