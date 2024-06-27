@@ -91,9 +91,30 @@ body {
 }
 
 .location-details {
-  border-style: dotted;
+  align-content: center;
+  border-style: dashed;
   border-width: thick;
   border-color: purple;
-  height: 20vh;
+  height: 10em;
+  margin: 20px;
   font-size: larger;
+}
+
+.location-title {
+  margin: 20px;
+  padding: 10px;
+  font-size: larger;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-bottom: solid;
+}
+
+.location-description {
+  margin: 20px;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+#map {
+  margin-top: 10px;
 }

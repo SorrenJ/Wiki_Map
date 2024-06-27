@@ -29,21 +29,24 @@ $(() => {
         if(clickedMarker) {
           $('#cancel-btn').hide();
           $('#save-btn').hide();
+          $(".location-details").hide();
           $(".location-title").remove();
           $(".location-description").remove();
           $(".location-image").remove();
           clickedMarker.dragging.disable();
         }
-        
+
         const $title = $("<section class=location-title>").text(location.title);
         const $description = $("<section class=location-description>").text(location.description);
-        // const $img = $("<img class=location-image>").attr('src', location.image);
+        //const $img = $("<img class=location-image>").attr('src', location.image);
         $(".location-details").append($title, $description);
+        $(".location-details").show();
         console.log("Current location Id", location.id);
         onMarkerClick(e, location.id)
      });
 
      map.on('click', function(e) {
+      $(".location-details").hide();
       $(".location-title").remove();
       $(".location-description").remove();
       $(".location-image").remove();
@@ -108,6 +111,7 @@ $('#edit-btn').hide();
 $('#save-btn').hide();
 $('#cancel-btn').hide();
 $('#delete-btn').hide();
+$(".location-details").hide();
 
 function onMarkerDrag(e){
   $('#edit-btn').hide();
